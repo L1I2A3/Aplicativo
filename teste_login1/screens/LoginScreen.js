@@ -52,7 +52,7 @@ const LoginScreen = () => {
             style = {styles.input}
         />
          <TextInput
-            placeholder="Passoword"
+            placeholder="Password"
             value = {password}
             onChangeText = {text => setPassword(text)}
             style = {styles.input}
@@ -84,7 +84,7 @@ export default LoginScreen
 
 const styles = StyleSheet.create({
 container: {
-    flex: 1,
+    flex: 2,
     justifyContent: 'center',
     alignItems: 'center',
 },
@@ -93,10 +93,12 @@ inputContainer: {
 },
 input: {
     backgroundColor: 'white',
-    paddingHorizontal: 15,
+    paddingHorizontal: 75,
     paddingVertical: 10,
     borderRadius: 10,
     marginTop: 5,
+    
+    
 },
 buttonContainer: {
     width: '60%',
