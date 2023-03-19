@@ -102,16 +102,16 @@ buttonContainer: {
     marginTop: 40,
 },
 button: {
-    backgroundColor: '#0782F9',
+    backgroundColor: '#078288',
     width: '100%',
     padding: 15,
-    borderRadius: 10,
+    borderRadius: 15,
     alignItems: 'center'
 },
 buttonOutline: {
     backgroundColor: 'white',
     marginTop: 5,
-    borderColor: '#0782F9',
+    borderColor: '#078288',
     borderWidth: 2,
 },
 buttonText: {
@@ -121,7 +121,7 @@ buttonText: {
 },
 
 buttonOutlineText: {
-    color: '#0782F9',
+    color: '#078288',
     fontWeight: '700',
     fontSize: 16
 },
