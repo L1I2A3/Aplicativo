@@ -51,7 +51,7 @@ button: {
   marginTop: 40,
 },
 buttonText: {
-  color: 'white',
+  color: 'blue',
   fontWeight: '700',
   fontSize: 16
 },
