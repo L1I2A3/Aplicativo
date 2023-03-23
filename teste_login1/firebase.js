@@ -8,12 +8,12 @@ import * as firebase from "firebase";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBhUvysbxfPeGKujEWDwJXEIgQYOQ4Y_aI",
-  authDomain: "telalogin-d7a15.firebaseapp.com",
-  projectId: "telalogin-d7a15",
-  storageBucket: "telalogin-d7a15.appspot.com",
-  messagingSenderId: "393176216732",
-  appId: "1:393176216732:web:22f3ba847b927dc1bee959"
+  apiKey: "AIzaSyD3UVmzFg1ndhKrWM3RgtS4zi-hEItXeK4",
+  authDomain: "teste-login1-eaf51.firebaseapp.com",
+  projectId: "teste-login1-eaf51",
+  storageBucket: "teste-login1-eaf51.appspot.com",
+  messagingSenderId: "450242592747",
+  appId: "1:450242592747:web:b3ad9bb2098e94e7a1e3ae"
 };
 
 // Initialize Firebase
