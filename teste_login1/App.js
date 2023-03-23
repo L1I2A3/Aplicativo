@@ -4,6 +4,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from './screens/LoginScreen';
 import HomeScreen from './screens/HomeScreen';
 import RegisterScreen from './screens/RegisterScreen';
+import ForgotPassword from './screens/ForgotPassword';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,7 +15,8 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen options= {{headerShown: false}} name="Login" component={LoginScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Register" component={RegisterScreen} />
+        <Stack.Screen name="Register" component={RegisterScreen} options={RegisterScreenStyle} />
+        <Stack.Screen name="ForgotPassword" component={ForgotPassword} options = {forgotPasswordStyle}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -27,3 +30,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+const forgotPasswordStyle = {
+  title: 'Recuperação de senha',
+}
+const RegisterScreenStyle = {
+  title: 'Registre-se',
+}

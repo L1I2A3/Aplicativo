@@ -22,7 +22,11 @@ const LoginScreen = () => {
         .catch(error => alert(error.message))
         
   }
-  
+
+  const ForgotPassword = () => {
+    navigation.push("ForgotPassword");
+  }
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
         if (user) {
@@ -57,6 +61,7 @@ const LoginScreen = () => {
             
         />
       </View>
+      
 
       <View style = {styles.buttonContainer}>
       <TouchableOpacity
@@ -73,6 +78,15 @@ const LoginScreen = () => {
             <Text style = {styles.buttonOutlineText}>Registre-se</Text>
         </TouchableOpacity>
 
+        <TouchableOpacity 
+            onPress={ForgotPassword}
+             style = {[styles.button, styles.buttonOutline]}>
+            
+            <Text style = {styles.buttonOutlineText}>
+                 Esqueceu sua senha?
+            </Text>
+            
+        </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
   )
@@ -95,8 +109,6 @@ input: {
     paddingVertical: 10,
     borderRadius: 10,
     marginTop: 5,
-    
-    
 },
 buttonContainer: {
     width: '60%',
