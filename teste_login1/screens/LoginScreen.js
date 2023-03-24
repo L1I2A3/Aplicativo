@@ -1,45 +1,64 @@
-import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { Alert, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, {useEffect, useState} from 'react'
 import { auth } from '../firebase'
-import { useNavigation } from '@react-navigation/core'
+import { CommonActions } from '@react-navigation/native'
 
 
 
-const LoginScreen = () => {
+const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const navigation = useNavigation();
-
-  
   
   const handleLogin = () => {
-    auth
+    if (email !== '' && password !== ''){
+        auth
         .signInWithEmailAndPassword(email, password)
-        .then(userCredentials => {
-            const user = userCredentials.user;
-            console.log('Logged in with: ', user.email);
+        .then(() => {
+            if (!auth.currentUser.emailVerified){
+                Alert.alert('Erro','O email deverá ser vericado')
+                return;
+            }
+            navigation.dispatch(
+                CommonActions.reset({
+                  index: 0,
+                  routes: [
+                    { name: 'Home' }],
+                  })
+            )
         })
-        .catch(error => alert(error.message))
+        .catch((e) => {
+            console.log('handleSignup' + e)
+            switch (e.code) {
+                case 'auth/user-not-found':
+                        Alert.alert('Erro','Usuário não cadastrado')
+                        break;
+                case 'auth/invalid-email':
+                        Alert.alert('Erro','Email inválido')
+                        break;
+                case 'auth/wrong-password':
+                        Alert.alert('Erro','Senha incorreta')
+                        break;
+                case 'auth/user-disabled':
+                        Alert.alert('Erro','Usuário desabilitado')
+                        break;
+                }
+            
+                }
+        )
+    } else {
+        Alert.alert('Erro','Campos obrigátorios não preenchidos');
+    };
+    
         
   }
 
   const ForgotPassword = () => {
-    navigation.push("ForgotPassword");
+    navigation.navigate("ForgotPassword");
   }
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(user => {
-        if (user) {
-            navigation.replace("Home")
-        }
-    })
-    return unsubscribe
-  }, [])
-
   const toRegister = () => {
-    navigation.push("Register")
+    navigation.navigate("Register")
   }
-  
+
   return (
     <KeyboardAvoidingView
     style={styles.container}
@@ -93,6 +112,8 @@ const LoginScreen = () => {
 }
 
 export default LoginScreen
+
+//TODO: AJEITAR A ESTÉTICA
 
 const styles = StyleSheet.create({
 container: {

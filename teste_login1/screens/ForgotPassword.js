@@ -1,6 +1,7 @@
 import { Alert, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import {auth} from '../firebase'
+import { CommonActions } from '@react-navigation/native'
 
 
 const ForgotPassword = ({navigation}) => {
@@ -8,12 +9,18 @@ const ForgotPassword = ({navigation}) => {
 
     const recover = () => {
         if (email !== ''){
-            console.log(email);
             auth
-                .sendPasswordResetEmail(email)
+                .sendPasswordResetEmail(email) //TODO: REMODELAR O EMAIL DE RESET
                 .then((r) => {
                 Alert.alert('Atenção', 'Foi enviado um email de recuperação de senha para o seguinte endereço: '+ email, 
-                [{text: 'OK', onPress: () => navigation.goBack()}]);
+                [{text: 'OK', 
+                  onPress: navigation.dispatch(
+                    CommonActions.reset({
+                      index: 0,
+                      routes: [
+                        { name: 'Login' }],
+                      })
+                )}]);
                 })
                 .catch((e) => {
                     console.log('ForgotPassword, recover'+ e)
@@ -66,6 +73,8 @@ const ForgotPassword = ({navigation}) => {
 }
 
 export default ForgotPassword
+
+//TODO: AJEITAR A ESTÉTICA
 
 const styles = StyleSheet.create({
     container: {

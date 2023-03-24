@@ -1,24 +1,62 @@
-import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { Alert, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, {useEffect, useState} from 'react'
 import { auth } from '../firebase'
-import { useNavigation } from '@react-navigation/core'
+import { CommonActions } from '@react-navigation/native'
 
 
 
-const RegisterScreen = () => {
+const RegisterScreen = ({navigation}) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const navigation = useNavigation();
+  const [confPassword, setConfPassword] = useState('')
+  const [name, setName] = useState('')
 
   const handleSignup = () => {
-    auth
+    if(email !== '' && password !== ''&& confPassword !== '' && name !== '') {
+      auth
         .createUserWithEmailAndPassword(email, password)
-        .then(userCredentials => {
-            const user = userCredentials.user;
-            console.log('Registered in with: ',user.email);
+        .then(() => {
+          let userF = auth.currentUser;
+          userF.sendEmailVerification() //TODO: REMODELAR O EMAIL DE REGISTRO
+          .then(() => {
+            Alert.alert('Verificação', 'Email de Verificação enviado com sucesso, verifique o endereço: ' + email);
+            navigation.dispatch(
+              CommonActions.reset({
+                index: 0,
+                routes: [
+                  { name: 'Login' }],
+                })
+           );
+          })
+          .catch((e) => {
+            console.log('handleSignup'+ e)   
+          })
+         
         })
-        .catch(error => alert(error.message))
-  }
+        .catch((e) => {
+          console.log('handleSignup'+ e)
+          switch (e.code) {
+              case 'auth/email-already-in-use':
+                Alert.alert('Erro','Email digitado já está em uso')
+                break;
+              case 'auth/invalid-email':
+                Alert.alert('Erro','Email inválido')
+                break;
+              case 'auth/user-disabled':
+                Alert.alert('Erro','Usuário desabilitado')
+                break;
+              case 'auth/operation-not-allowed':
+                Alert.alert('Erro','Problemas técnicos ao cadastrar')
+                break;
+              }
+          
+            }
+        )
+    } else {
+      Alert.alert('Alerta', 'Por favor, preencha os campos acima')
+    }
+    
+    }
 
   return (
     <KeyboardAvoidingView
@@ -27,15 +65,29 @@ const RegisterScreen = () => {
     >
       <View styles={styles.inputContainer}>
         <TextInput
+            placeholder="Nome completo"
+            value = {name}
+            onChangeText = {text => setName(text)}
+            style = {styles.input}
+        />
+         <TextInput
             placeholder="Email"
             value = {email}
             onChangeText = {text => setEmail(text)}
             style = {styles.input}
+
         />
-         <TextInput
-            placeholder="Password"
+        <TextInput
+            placeholder="Senha"
             value = {password}
             onChangeText = {text => setPassword(text)}
+            style = {styles.input}
+            secureTextEntry
+        />
+         <TextInput
+            placeholder="Confirmar senha"
+            value = {confPassword}
+            onChangeText = {text => setConfPassword(text)}
             style = {styles.input}
             secureTextEntry
         />
@@ -59,6 +111,8 @@ const RegisterScreen = () => {
 }
 
 export default RegisterScreen
+
+//TODO: AJEITAR A ESTÉTICA
 
 const styles = StyleSheet.create({
 container: {

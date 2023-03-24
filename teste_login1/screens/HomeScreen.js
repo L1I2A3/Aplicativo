@@ -11,7 +11,13 @@ const HomeScreen = () => {
     auth
     .signOut()
     .then(() => {
-      navigation.replace("Login");
+      navigation.dispatch(
+        CommonActions.reset({
+          index: 0,
+          routes: [
+            { name: 'Login' }],
+          })
+    );
     })
     .catch(error => alert(error.message))
   }

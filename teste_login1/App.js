@@ -9,18 +9,36 @@ import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const Stack = createNativeStackNavigator();
 
-export default function App() {
+ const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen options= {{headerShown: false}} name="Login" component={LoginScreen} />
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Register" component={RegisterScreen} options={RegisterScreenStyle} />
-        <Stack.Screen name="ForgotPassword" component={ForgotPassword} options = {forgotPasswordStyle}/>
+      <Stack.Navigator initialRouteName='Login'>
+        <Stack.Screen 
+        options= {{headerShown: false}} 
+        name="Login"
+         component={LoginScreen} 
+         />
+
+        <Stack.Screen 
+        name="Home" 
+        component={HomeScreen}
+         />
+
+        <Stack.Screen 
+        name="Register" 
+        component={RegisterScreen} 
+        options={RegisterScreenStyle} 
+        />
+        
+        <Stack.Screen 
+        name="ForgotPassword" component={ForgotPassword} options = {forgotPasswordStyle}
+        />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
+export default App;
 
 const styles = StyleSheet.create({
   container: {
