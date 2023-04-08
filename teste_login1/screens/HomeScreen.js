@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { auth } from '../firebase'
 import { useNavigation } from '@react-navigation/core'
@@ -36,6 +36,15 @@ const HomeScreen = () => {
 
       </TouchableOpacity>
 
+      <TouchableOpacity 
+      style={styles.button}
+      onPress={()=>navigation.navigate('TextToVoice')} 
+      >
+        
+        <Text style={styles.buttonText}>Texto para voz</Text>
+
+      </TouchableOpacity>
+
     </View>
   )
 }
@@ -49,7 +58,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
 },
 button: {
-  backgroundColor: '#ffff',
+  backgroundColor: '#0782F9',
   width: '60%',
   padding: 15,
   borderRadius: 10,
@@ -61,4 +70,5 @@ buttonText: {
   fontWeight: '700',
   fontSize: 16
 },
+
 })

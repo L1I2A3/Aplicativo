@@ -6,11 +6,13 @@ import HomeScreen from './screens/HomeScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import ForgotPassword from './screens/ForgotPassword';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
+import TextToVoiceScreen from './screens/TextToVoice';
 
 const Stack = createNativeStackNavigator();
 
  const App = () => {
   return (
+
     <NavigationContainer>
       <Stack.Navigator initialRouteName='Login'>
         <Stack.Screen 
@@ -29,11 +31,26 @@ const Stack = createNativeStackNavigator();
         component={RegisterScreen} 
         options={RegisterScreenStyle} 
         />
-        
+
         <Stack.Screen 
-        name="ForgotPassword" component={ForgotPassword} options = {forgotPasswordStyle}
+        name="ForgotPassword" 
+        component={ForgotPassword} 
+        options = {forgotPasswordStyle}
         />
 
+        <Stack.Screen 
+        name="TextToVoice" 
+        component={TextToVoiceScreen} 
+        options 
+        />
+
+      </Stack.Navigator>
+
+      <Stack.Navigator>
+        <Stack.Screen options= {{headerShown: false}} name="Login" component={LoginScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Register" component={RegisterScreen} />
+        <Stack.Screen name="TextToVoice" component={TextToVoiceScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
