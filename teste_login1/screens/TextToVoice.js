@@ -4,14 +4,13 @@ import { useNavigation } from '@react-navigation/core'
 
 const TextToVoiceScreen = ()=>{
 
-    const [message,setMessage]=useState("")
+    const [message, setMessage]=useState("")
 
     const navigation = useNavigation();
 
 return (
 
 
-  
 <View style={styles.container}>
 
 <View style={styles.buttonContainer}>
