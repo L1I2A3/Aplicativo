@@ -69,18 +69,26 @@ const LoginScreen = ({navigation}) => {
                 accessibilityLabel='logo do app'
             />
             <TextInput 
-            style={styles.input}
-            placeholder="Email"
-            value = {email}
-            onChangeText = {text => setEmail(text)}
+                style={styles.input}
+                placeholder="Email"
+                value = {email}
+                onChangeText = {text => setEmail(text)}
+                keyboardType="email-address"
+                returnKeyType="next"
+                onEndEditing={() => this.passTextInput.focus()}
             />
 
             <TextInput 
-            style={styles.input}
-            placeholder="Password"
-            value = {password}
-            onChangeText = {text => setPassword(text)}
-            secureTextEntry/>
+                ref = {(ref) => {
+                    this.passTextInput = ref;
+                }}
+                style={styles.input}
+                placeholder="Senha"
+                keyboardType= "default"
+                returnKeyType="go"
+                value = {password}
+                onChangeText = {text => setPassword(text)}
+                secureTextEntry/>
 
             <Text style={styles.textEsqueceuSenha} onPress={ForgotPassword}>Esqueceu sua senha?</Text>
 
@@ -128,8 +136,8 @@ divInferior: {
 
 },
 image: {
-    width: 185,
-    height: 186,
+    width: 190,
+    height: 185,
     margin: 10,
 },
 input: {
