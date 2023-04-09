@@ -1,9 +1,9 @@
-import { Alert, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { Alert, StyleSheet, Text, TextInput, View, Image, ScrollView, SafeAreaView } from 'react-native'
 import React, {useEffect, useState} from 'react'
 import { auth } from '../firebase'
 import { CommonActions } from '@react-navigation/native'
-
-
+import Button from '../src/components/Button'
+import {COLORS} from '../src/assets/colors'
 
 const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState('')
@@ -42,7 +42,6 @@ const LoginScreen = ({navigation}) => {
                         Alert.alert('Erro','Usuário desabilitado')
                         break;
                 }
-            
                 }
         )
     } else {
@@ -60,54 +59,50 @@ const LoginScreen = ({navigation}) => {
   }
 
   return (
-    <KeyboardAvoidingView
-    style={styles.container}
-    behavior="padding"
-    >
-      <View styles={styles.inputContainer}>
-        <TextInput
+    <SafeAreaView style={styles.container}>
+        <ScrollView>
+
+        <View style={styles.divSuperior}>
+            <Image 
+                style={styles.image} 
+                source={require('../src/assets/imagens/templateLogo.png')}
+                accessibilityLabel='logo do app'
+            />
+            <TextInput 
+            style={styles.input}
             placeholder="Email"
             value = {email}
             onChangeText = {text => setEmail(text)}
-            style = {styles.input}
-        />
-         <TextInput
+            />
+
+            <TextInput 
+            style={styles.input}
             placeholder="Password"
             value = {password}
             onChangeText = {text => setPassword(text)}
-            style = {styles.input}
-            secureTextEntry
-            
-        />
-      </View>
-      
+            secureTextEntry/>
 
-      <View style = {styles.buttonContainer}>
-      <TouchableOpacity
-            onPress={handleLogin}
-            style = {styles.button}
-        >
-            <Text style = {styles.buttonText}>Login</Text>
-        </TouchableOpacity>
+            <Text style={styles.textEsqueceuSenha} onPress={ForgotPassword}>Esqueceu sua senha?</Text>
 
-        <TouchableOpacity
-            onPress={toRegister}
-            style = {[styles.button, styles.buttonOutline]}
-        >
-            <Text style = {styles.buttonOutlineText}>Registre-se</Text>
-        </TouchableOpacity>
+            <Button texto= 'ENTRAR' onClick={handleLogin}/>
+        </View>
 
-        <TouchableOpacity 
-            onPress={ForgotPassword}
-             style = {[styles.button, styles.buttonOutline]}>
+
+
+        <View style={styles.divInferior}>
+            <View style={styles.diOuHr}>
+                <View style={styles.divHr}></View>
+                <Text style={styles.textOu}>OU</Text>
+                <View style={styles.divHr}></View>
+            </View>
+            <View style={styles.divCadastrarse}>
+                <Text style={styles.textNormal}>Não tem uma conta?</Text>
+                <Text style={styles.textCadastrase} onPress={toRegister}> Cadastre-se</Text>
+            </View>
             
-            <Text style = {styles.buttonOutlineText}>
-                 Esqueceu sua senha?
-            </Text>
-            
-        </TouchableOpacity>
-      </View>
-    </KeyboardAvoidingView>
+        </View>
+        </ScrollView>
+    </SafeAreaView>
   )
 }
 
@@ -117,49 +112,79 @@ export default LoginScreen
 
 const styles = StyleSheet.create({
 container: {
-    flex: 2,
+    flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
+    padding: 20,
 },
-inputContainer: {
-    width: '80%'
+divSuperior: {
+    flex: 2,
+    alignItems: 'center',
+    
+},
+divInferior: {
+    flex: 1,
+    alignItems: 'center',
+    marginTop: 20,
+
+},
+image: {
+    width: 185,
+    height: 186,
+    margin: 10,
 },
 input: {
-    backgroundColor: 'white',
-    paddingHorizontal: 75,
-    paddingVertical: 10,
-    borderRadius: 10,
-    marginTop: 5,
+    width: '95%',
+    height: 50,
+    margin: 10,
+    borderBottomColor: COLORS.grey,
+    borderBottomWidth: 2,
+    font: '16',
+    paddingLeft: 2,
+    paddingBottom: 1,
+
 },
-buttonContainer: {
-    width: '60%',
+textEsqueceuSenha: {
+    font: '15',
+    color: COLORS.accenSecundary,
+    alignSelf: 'flex-end',
+    marginTop: 20,
+
+},
+diOuHr: {
+    width: '100%',
+    height: 50,
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 40,
 },
-button: {
-    backgroundColor: '#078288',
-    width: '100%',
-    padding: 15,
-    borderRadius: 15,
-    alignItems: 'center'
-},
-buttonOutline: {
-    backgroundColor: 'white',
-    marginTop: 5,
-    borderColor: '#078288',
-    borderWidth: 2,
-},
-buttonText: {
-    color: 'white',
-    fontWeight: '700',
-    fontSize: 16
-},
+divHr: {
+    width: '30%',
+    height: 1,
+    borderBottomColor: COLORS.grey,
+    borderBottomWidth: 2,
 
-buttonOutlineText: {
-    color: '#078288',
-    fontWeight: '700',
-    fontSize: 16
 },
+textOu: {
+    marginLeft: 20,
+    marginRight: 20,
+    fontSize: 20,
+    color: COLORS.grey,
 
+},
+divCadastrarse: {
+  flex: 1,
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+  padding: 20,
+},
+textNormal: {
+    fontSize: 18,
+
+},
+textCadastrase: {
+    fontSize: 18,
+    color: COLORS.accentSecundary,
+    marginLeft: 3,
+},
 })

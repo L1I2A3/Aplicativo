@@ -5,17 +5,19 @@ import LoginScreen from './screens/LoginScreen';
 import HomeScreen from './screens/HomeScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import ForgotPassword from './screens/ForgotPassword';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { StatusBar } from 'react-native';
+import {COLORS} from './src/assets/colors';
 
 const Stack = createNativeStackNavigator();
 
  const App = () => {
   return (
     <NavigationContainer>
+      <StatusBar backgroundColor= {COLORS.primary}/>
       <Stack.Navigator initialRouteName='Login'>
         <Stack.Screen 
-        options= {{headerShown: false}} 
-        name="Login"
+         options= {{headerShown: false}}
+         name="Login"
          component={LoginScreen} 
          />
 

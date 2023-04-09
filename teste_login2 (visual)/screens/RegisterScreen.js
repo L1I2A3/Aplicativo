@@ -1,7 +1,11 @@
-import { Alert, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { Alert, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView } from 'react-native'
 import React, {useEffect, useState} from 'react'
 import { auth } from '../firebase'
 import { CommonActions } from '@react-navigation/native'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import {COLORS} from '../src/assets/colors'
+import Button from '../src/components/Button'
+
 
 
 
@@ -59,54 +63,46 @@ const RegisterScreen = ({navigation}) => {
     }
 
   return (
-    <KeyboardAvoidingView
-    style={styles.container}
-    behavior="padding"
-    >
-      <View styles={styles.inputContainer}>
-        <TextInput
-            placeholder="Nome completo"
-            value = {name}
-            onChangeText = {text => setName(text)}
-            style = {styles.input}
-        />
-         <TextInput
-            placeholder="Email"
-            value = {email}
-            onChangeText = {text => setEmail(text)}
-            style = {styles.input}
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
 
-        />
-        <TextInput
-            placeholder="Senha"
-            value = {password}
-            onChangeText = {text => setPassword(text)}
-            style = {styles.input}
-            secureTextEntry
-        />
-         <TextInput
-            placeholder="Confirmar senha"
-            value = {confPassword}
-            onChangeText = {text => setConfPassword(text)}
-            style = {styles.input}
-            secureTextEntry
-        />
-       
-      </View>
+        <View style={styles.divSuperior}>
+            <TextInput
+                style = {styles.input}
+                placeholder="Nome completo"
+                value = {name}
+                onChangeText = {text => setName(text)}
+            />
+            <TextInput
+                style = {styles.input}
+                placeholder="Email"
+                value = {email}
+                onChangeText = {text => setEmail(text)}
+            />
+            <TextInput
+                style = {styles.input}
+                placeholder="Senha"
+                value = {password}
+                onChangeText = {text => setPassword(text)}
+                secureTextEntry
+            />
+            <TextInput
+                placeholder="Confirmar senha"
+                value = {confPassword}
+                onChangeText = {text => setConfPassword(text)}
+                style = {styles.input}
+                secureTextEntry
+            />
+        </View>
 
-      <View style = {styles.buttonContainer}>
-        
-        <TouchableOpacity
-           onPress={handleSignup}
-            style = {[styles.button, styles.buttonOutline]}
-        >
-            <Text style = {styles.buttonOutlineText}>Registre-se</Text>
-        </TouchableOpacity>
+        <View style={styles.divInferior}>
+          <Button texto= 'Registre-se' onClick={handleSignup}/>
+        </View>
 
-        
+      </ScrollView>
+    </SafeAreaView>
 
-      </View>
-    </KeyboardAvoidingView>
+    
   )
 }
 
@@ -116,59 +112,31 @@ export default RegisterScreen
 
 const styles = StyleSheet.create({
 container: {
-  flex: 2,
+  flex: 1,
   justifyContent: 'center',
-  alignItems: 'center',
+  padding: 20,
 },
-inputContainer: {
-  width: '80%',
+divSuperior: {
+  flex: 2,
+  alignItems: 'center',
+  
+},
+divInferior: {
+  flex: 1,
+  alignItems: 'center',
+  marginTop: 20,
+
 },
 input: {
-  backgroundColor: 'white',
-  paddingHorizontal: 40,
-  paddingVertical: 10,
-  borderRadius: 10,
-  marginTop: 10,
-  textAlign: 'center'
-  
-  
-},
-buttonContainer: {
-  width: '60%',
-  justifyContent: 'center',
-  alignItems: 'center',
-  marginTop: 40,
-},
-button: {
-  backgroundColor: '#0782F9',
-  width: '100%',
-  padding: 15,
-  borderRadius: 10,
-  alignItems: 'center'
-},
-buttonBack: {
-  backgroundColor: '#0782F9',
-  width: '100%',
-  padding: 25,
-  borderRadius: 10,
-  alignItems: 'center'
-},
-buttonOutline: {
-  backgroundColor: 'white',
-  marginTop: 5,
-  borderColor: '#0782F9',
-  borderWidth: 2,
-},
-buttonText: {
-  color: 'white',
-  fontWeight: '700',
-  fontSize: 16
-},
+    width: '95%',
+    height: 50,
+    margin: 10,
+    borderBottomColor: COLORS.grey,
+    borderBottomWidth: 2,
+    font: '16',
+    paddingLeft: 2,
+    paddingBottom: 1,
 
-buttonOutlineText: {
-  color: '#0782F9',
-  fontWeight: '700',
-  fontSize: 16
 },
-
-})
+  
+},)
