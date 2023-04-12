@@ -1,6 +1,6 @@
 import { Alert, StyleSheet, Text, TextInput, View, Image, ScrollView, SafeAreaView } from 'react-native'
 import React, {useEffect, useState} from 'react'
-import { auth } from '../firebase'
+import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
 import { CommonActions } from '@react-navigation/native'
 import Button from '../src/components/Button'
 import {COLORS} from '../src/assets/colors'
@@ -10,14 +10,14 @@ const LoginScreen = ({navigation}) => {
   const [password, setPassword] = useState('')
   
   const handleLogin = () => {
+    const auth = getAuth();
     if (email !== '' && password !== ''){
-        auth
-        .signInWithEmailAndPassword(email, password)
+        signInWithEmailAndPassword(auth, email, password)
         .then(() => {
-            if (!auth.currentUser.emailVerified){
+            /*if (!currentUser.emailVerified){
                 Alert.alert('Erro','O email deverá ser vericado')
                 return;
-            }
+            }*/
             navigation.dispatch(
                 CommonActions.reset({
                   index: 0,

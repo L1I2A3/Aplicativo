@@ -1,16 +1,15 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import { auth } from '../firebase'
+import {getAuth, signOut} from 'firebase/auth'
 import { useNavigation, CommonActions } from '@react-navigation/core'
 
 const HomeScreen = () => {
+const auth = getAuth();
 
   const navigation = useNavigation();
 
   const handleSignOut = () => {
-    auth
-    .signOut()
-    .then(() => {
+    signOut(auth).then(() => {
       navigation.dispatch(
         CommonActions.reset({
           index: 0,
