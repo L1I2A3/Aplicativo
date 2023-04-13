@@ -1,10 +1,11 @@
 import { Alert, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView } from 'react-native'
 import React, {useEffect, useState} from 'react'
-import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth'
+import {getAuth, createUserWithEmailAndPassword, sendEmailVerification} from 'firebase/auth'
 import { CommonActions } from '@react-navigation/native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import {COLORS} from '../src/assets/colors'
 import Button from '../src/components/Button'
+import { doc, setDoc } from 'firebase/firestore'
 
 const RegisterScreen = ({navigation}) => {
   const [email, setEmail] = useState('')
@@ -12,13 +13,16 @@ const RegisterScreen = ({navigation}) => {
   const [confPassword, setConfPassword] = useState('')
   const [name, setName] = useState('')
 
-
   const handleSignup = () => {
     const auth = getAuth();
     if(email !== '' && password !== ''&& confPassword !== '' && name !== '') {
         createUserWithEmailAndPassword(auth, email, password)
         .then(() => {
-          
+        //  let user = {}
+        //    user.nome = name;
+        //    user.email = email;
+
+         // setDoc(doc(db, "users", ), docData);
           sendEmailVerification(auth.currentUser) //TODO: REMODELAR O EMAIL DE REGISTRO
           .then(() => {
             Alert.alert('Verificação', 'Email de Verificação enviado com sucesso, verifique o endereço: ' + email);
@@ -31,8 +35,6 @@ const RegisterScreen = ({navigation}) => {
            );
           })
           
-          
-         
           .catch((e) => {
             console.log('handleSignup'+ e)   
           })
@@ -75,25 +77,21 @@ const RegisterScreen = ({navigation}) => {
                 onChangeText = {text => setName(text)}
                 keyboardType="default"
                 returnKeyType="next"
-                onEndEditing={() => this.passNameInput.focus()}
+                
                 
             />
             <TextInput
-            ref = {(ref) => {
-              this.passNameInput = ref;
-            }}
+            
                 style = {styles.input}
                 placeholder="Email"
                 value = {email}
                 onChangeText = {text => setEmail(text)}
                 keyboardType="email-address"
                 returnKeyType="next"
-                onEndEditing={() => this.passEmailInput.focus()}
+                
             />
             <TextInput
-            ref = {(ref) => {
-              this.passEmailInput = ref;
-            }}
+           
                 style = {styles.input}
                 placeholder="Senha"
                 value = {password}
@@ -101,12 +99,10 @@ const RegisterScreen = ({navigation}) => {
                 secureTextEntry
                 keyboardType="default"
                 returnKeyType="next"
-                onEndEditing={() => this.passPassInput.focus()}
+                
             />
             <TextInput
-            ref = {(ref) => {
-              this.passPassInput = ref;
-            }}
+            
                 placeholder="Confirmar senha"
                 value = {confPassword}
                 onChangeText = {text => setConfPassword(text)}
@@ -114,7 +110,6 @@ const RegisterScreen = ({navigation}) => {
                 secureTextEntry
                 keyboardType="default"
                 returnKeyType="send"
-                onEndEditing={() => handleSignup()}
 
             />
         </View>

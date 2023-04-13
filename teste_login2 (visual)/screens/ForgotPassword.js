@@ -1,16 +1,15 @@
 import { Alert, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
-import {auth} from '../firebase'
+import {getAuth} from 'firebase/auth'
 import { CommonActions } from '@react-navigation/native'
 
 
 const ForgotPassword = ({navigation}) => {
     const [email, setEmail] = useState('');
-
     const recover = () => {
+      const auth = getAuth();
         if (email !== ''){
-            auth
-                .sendPasswordResetEmail(email) //TODO: REMODELAR O EMAIL DE RESET
+            sendPasswordResetEmail(auth, email) //TODO: REMODELAR O EMAIL DE RESET
                 .then((r) => {
                 Alert.alert('Atenção', 'Foi enviado um email de recuperação de senha para o seguinte endereço: '+ email, 
                 [{text: 'OK', 

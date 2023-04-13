@@ -14,10 +14,10 @@ const LoginScreen = ({navigation}) => {
     if (email !== '' && password !== ''){
         signInWithEmailAndPassword(auth, email, password)
         .then(() => {
-            /*if (!currentUser.emailVerified){
+            if (!currentUser.emailVerified){
                 Alert.alert('Erro','O email deverá ser vericado')
                 return;
-            }*/
+            }
             navigation.dispatch(
                 CommonActions.reset({
                   index: 0,
