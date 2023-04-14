@@ -1,63 +1,74 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { getAuth, signOut } from 'firebase/auth'
+import { app } from '../firebase'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native'
 import React from 'react'
-import {getAuth, signOut} from 'firebase/auth'
 import { useNavigation, CommonActions } from '@react-navigation/core'
+import ButtonFunction from '../src/components/ButtonFunction';
+import { COLORS } from '../src/assets/colors'
+import { useEffect } from 'react'
+import LogoutButton from '../src/components/LogoutButton'
 
 const HomeScreen = () => {
-const auth = getAuth();
+  const auth = getAuth(app);
 
   const navigation = useNavigation();
 
-  const handleSignOut = () => {
-    signOut(auth).then(() => {
-      navigation.dispatch(
-        CommonActions.reset({
-          index: 0,
-          routes: [
-            { name: 'Login' }],
-          })
-    );
+  useEffect(() => {
+    navigation.setOptions({
+      //configura a barra superior
+      //headerLeft: false,
+      title: 'Usuários',
+      headerStyle: { backgroundColor: COLORS.primary },
+      headerTitleStyle: { color: COLORS.white },
+      headerRight: () => <LogoutButton />
     })
-    .catch(error => alert(error.message))
-  }
+  }, []);
+
+  
 
   return (
     <View style={styles.container}>
+      <View style={styles.divUm}>
+        <Image
+          style={styles.image}
+          source={require('../src/assets/imagens/templateLogo.png')}
+          accessibilityLabel='logo do app'
+        />
 
-      <Text>Email: {auth.currentUser?.email} </Text>
+      </View>
 
-      <TouchableOpacity 
-      style={styles.button}
-      onPress = {handleSignOut}
-      >
-        
-        <Text style={styles.buttonText}>Sign out</Text>
+      <View style={styles.divDois}>
+        <ButtonFunction texto="Comunicação Alternativa Aumentada" />
+      </View>
 
-      </TouchableOpacity>
-
+      <View style={styles.divTres}>
+        <ButtonFunction texto="Texto para áudio" />
+      </View>
+      <View style={styles.divQuatro}>
+        <ButtonFunction texto="Favoritos" />
+      </View>
     </View>
-  )
-}
+  );
 
-export default HomeScreen
+  
+};
+
+export default HomeScreen;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-},
-button: {
-  backgroundColor: '#ffff',
-  width: '60%',
-  padding: 15,
-  borderRadius: 10,
-  alignItems: 'center',
-  marginTop: 40,
-},
-buttonText: {
-  color: 'blue',
-  fontWeight: '700',
-  fontSize: 16
-},
-})
+  },
+  divUm: { flex: 2, alignItems: 'center' },
+  divDois: { flex: 3, alignItems: 'center' },
+  divTres: { flex: 3, alignItems: 'center' },
+  divQuatro: { flex: 3, alignItems: 'center' },
+  image: {
+    width: 105,
+    height: 100,
+    marginTop: 40,
+  },
+});

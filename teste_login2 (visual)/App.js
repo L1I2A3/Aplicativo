@@ -5,35 +5,42 @@ import LoginScreen from './screens/LoginScreen';
 import HomeScreen from './screens/HomeScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import ForgotPassword from './screens/ForgotPassword';
+import Preload from './screens/Preload';
 import { StatusBar } from 'react-native';
-import {COLORS} from './src/assets/colors';
+import { COLORS } from './src/assets/colors';
 
 const Stack = createNativeStackNavigator();
-
- const App = () => {
+const App = () => {
   return (
     <NavigationContainer>
-      <StatusBar backgroundColor= {COLORS.primary}/>
-      <Stack.Navigator initialRouteName='Login'>
-        <Stack.Screen 
-         options= {{headerShown: false}}
-         name="Login"
-         component={LoginScreen} 
-         />
-
-        <Stack.Screen 
-        name="Home" 
-        component={HomeScreen}
-         />
-
-        <Stack.Screen 
-        name="Register" 
-        component={RegisterScreen} 
-        options={RegisterScreenStyle} 
+      <StatusBar backgroundColor={COLORS.primary} />
+      <Stack.Navigator initialRouteName='Preload'>
+        <Stack.Screen
+          name="Preload"
+          component={Preload}
+          options={PreLoadStyle}
         />
-        
-        <Stack.Screen 
-        name="ForgotPassword" component={ForgotPassword} options = {forgotPasswordStyle}
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="Login"
+          component={LoginScreen}
+        />
+
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+        />
+
+        <Stack.Screen
+          name="Register"
+          component={RegisterScreen}
+          options={RegisterScreenStyle}
+        />
+
+        <Stack.Screen
+          name="ForgotPassword"
+          component={ForgotPassword}
+          options={forgotPasswordStyle}
         />
 
       </Stack.Navigator>
@@ -51,9 +58,17 @@ const styles = StyleSheet.create({
   },
 });
 
-const forgotPasswordStyle = {
-  title: 'Recuperação de senha',
+const PreLoadStyle = {
+  title: 'Registre-se',
+  headerShown: false,
 }
 const RegisterScreenStyle = {
   title: 'Registre-se',
 }
+
+const forgotPasswordStyle = {
+  title: 'Recuperação de senha',
+}
+
+
+
