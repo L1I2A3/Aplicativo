@@ -5,7 +5,7 @@ export const Container = styled.SafeAreaView`
     align-items: center;
     justify-content: center;
 `
-export const flatList = styled.FlatList`
+export const FlatList = styled.FlatList`
     width: 95%;
     height: 100%;
 `

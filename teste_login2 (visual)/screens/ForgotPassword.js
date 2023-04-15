@@ -6,6 +6,7 @@ import { CommonActions } from '@react-navigation/native'
 
 
 const ForgotPassword = ({navigation}) => {
+  
     const [email, setEmail] = useState('');
     const recover = () => {
       const auth = getAuth(app);

@@ -19,17 +19,16 @@ const TextEmail = styled.Text`
     color: ${COLORS.white};
 `;
 
-const FavoriteScreen = ({title, onPress}) => {
+const Item = ({item, onPress}) => {
     return (
         <Button onPress={onPress} underlayColor='transparent'>
             <>
-               {/* <TextName>{item.nome}</TextName>
-                <TextEmail>{item.email}</TextEmail>*/}
-                <TextName>{title}</TextName>
+               <TextName>{item.nome}</TextName>
+                <TextEmail>{item.email}</TextEmail>
 
             </>
         </Button>
     )
 }
 
-export default FavoriteScreen;
+export default Item;
