@@ -17,7 +17,7 @@ const RegisterScreen = ({navigation}) => {
         .createUserWithEmailAndPassword(email, password)
         .then(() => {
           let userF = auth.currentUser;
-          userF.sendEmailVerification() //TODO: REMODELAR O EMAIL DE REGISTRO
+          userF.sendEmailVerification() //: REMODELAR O EMAIL DE REGISTRO
           .then(() => {
             Alert.alert('Verificação', 'Email de Verificação enviado com sucesso, verifique o endereço: ' + email);
             navigation.dispatch(
@@ -112,7 +112,7 @@ const RegisterScreen = ({navigation}) => {
 
 export default RegisterScreen
 
-//TODO: AJEITAR A ESTÉTICA
+// AJEITAR A ESTÉTICA
 
 const styles = StyleSheet.create({
 container: {

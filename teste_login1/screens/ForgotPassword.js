@@ -10,7 +10,7 @@ const ForgotPassword = ({navigation}) => {
     const recover = () => {
         if (email !== ''){
             auth
-                .sendPasswordResetEmail(email) //TODO: REMODELAR O EMAIL DE RESET
+                .sendPasswordResetEmail(email) //: REMODELAR O EMAIL DE RESET
                 .then((r) => {
                 Alert.alert('Atenção', 'Foi enviado um email de recuperação de senha para o seguinte endereço: '+ email, 
                 [{text: 'OK', 
@@ -74,7 +74,7 @@ const ForgotPassword = ({navigation}) => {
 
 export default ForgotPassword
 
-//TODO: AJEITAR A ESTÉTICA
+//: AJEITAR A ESTÉTICA
 
 const styles = StyleSheet.create({
     container: {

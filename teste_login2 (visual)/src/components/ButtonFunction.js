@@ -7,7 +7,7 @@ import {
     View,
 } from 'react-native';
 import { COLORS } from '../assets/colors';
-
+    //TODO: como passar cores, que vem como valores de um outro arquivo em props para este botão?
 const ButtonFunction = (props) => {
     return (
         <View>
@@ -27,7 +27,8 @@ const styles = StyleSheet.create ({
         fontSize: 24,
         color: COLORS.white,
         justifyContent: 'center',
-        alignItems: 'center',
+        textAlign: 'center',
+        marginBottom: 7
     },
     button: {
         width: 340,
@@ -39,8 +40,8 @@ const styles = StyleSheet.create ({
         padding: 1,
     },
     image: {
-        width: 105,
-        height: 100,
-        marginTop: 0,
+        maxWidth: '100%',
+        maxHeight: '100%',
+        resizeMode: 'cover',
     },
 });

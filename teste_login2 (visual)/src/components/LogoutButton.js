@@ -2,8 +2,7 @@ import styled from 'styled-components/native';
 import { getAuth, signOut } from 'firebase/auth';
 import { app } from '../../firebase'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import RNRestart from 'react-native-restart';
-
+import { Updates  } from 'expo';
 
 
 const ButtonExit = styled.TouchableHighlight`
@@ -18,7 +17,7 @@ const Image = styled.Image`
 
 `
 const auth = getAuth(app);
-
+//: Reload do app não está funcionando
 const LogoutButton = () => {
   const unLog = () => {
     AsyncStorage.removeItem('user')
@@ -28,7 +27,7 @@ const LogoutButton = () => {
         .catch((e) => {
           console.log('LogoutButton, signOut' + e)
         })
-        RNRestart.restart();  
+        Updates.reloadAsync()     
       })
       .catch((e) => {
         console.log('LogoutButton, unLog em AsyncStorage.removeItem' + e)

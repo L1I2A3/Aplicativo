@@ -84,7 +84,7 @@ const LoginScreen = ({navigation}) => {
 
       <View style = {styles.buttonContainer}>
       <TouchableOpacity  // botão login
-            onPress={()=>navigation.navigate('Home')} // "!!!!! mudei porque nao conseguia logar pra testar as outras telas kkk (  {handleLogin}  em vez de {()=>navigation.navigate('Home')}   ) " TODO: alterar essa parte
+            onPress={()=>navigation.navigate('Home')} // "!!!!! mudei porque nao conseguia logar pra testar as outras telas kkk (  {handleLogin}  em vez de {()=>navigation.navigate('Home')}   ) " : alterar essa parte
             style = {styles.button}
         >
             <Text style = {styles.buttonText}>Login</Text>
@@ -113,7 +113,7 @@ const LoginScreen = ({navigation}) => {
 
 export default LoginScreen
 
-//TODO: AJEITAR A ESTÉTICA
+//: AJEITAR A ESTÉTICA
 
 const styles = StyleSheet.create({
 container: {

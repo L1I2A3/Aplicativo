@@ -2,7 +2,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from './screens/LoginScreen';
-import HomeScreen from './screens/HomeScreen';
+import HomeScreen from './screens/HomeScreen/Index';
+import FavoriteScreen from './screens/FavoriteScreen/index';
 import RegisterScreen from './screens/RegisterScreen';
 import ForgotPassword from './screens/ForgotPassword';
 import Preload from './screens/Preload';
@@ -42,6 +43,11 @@ const App = () => {
           component={ForgotPassword}
           options={forgotPasswordStyle}
         />
+        <Stack.Screen
+          name="FavoriteScreen"
+          component={FavoriteScreen}
+          options={favoriteScreenStyle}
+        />
 
       </Stack.Navigator>
     </NavigationContainer>
@@ -68,6 +74,9 @@ const RegisterScreenStyle = {
 
 const forgotPasswordStyle = {
   title: 'Recuperação de senha',
+}
+const favoriteScreenStyle = {
+  title: 'Favoritos',
 }
 
 
