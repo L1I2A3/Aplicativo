@@ -23,6 +23,7 @@ const TextToSpeechScreen = ({ navigation }) => {
         placeholder="Insira o texto a ser falado"
         value={message}
         onChangeText={text => setMessage(text)}
+        multiline
       />
 
       <View style={styles.buttonContainer}>
