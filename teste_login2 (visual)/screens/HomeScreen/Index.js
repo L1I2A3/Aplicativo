@@ -3,7 +3,7 @@ import { app } from '../../firebase'
 import { getFirestore, collection, getDocs, doc } from 'firebase/firestore'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native'
-import React from 'react'
+import React, { Component } from 'react'
 import { useNavigation, CommonActions } from '@react-navigation/core'
 import { COLORS } from '../../src/assets/colors'
 import { useEffect, useState } from 'react'
@@ -14,12 +14,11 @@ import PECS from '../../src/assets/imagens/icon_PECS.png'
 import TextVoice from '../../src/assets/imagens/icon_TextVoice.png'
 
 
-
 const HomeScreen = () => {
-  const auth = getAuth(app);
   const db = getFirestore(app);
   const navigation = useNavigation();
   const [data, setData] = useState([]);
+  
 
   const getUsers = () => {
     getDocs(collection(db, "users"))
@@ -27,7 +26,6 @@ const HomeScreen = () => {
         let d = [];
         querySnapshot.forEach((doc) => {
           //console.log(doc.id, " => ", doc.data());
-
           const user = {
             id: doc.id,
             nome: doc.data().nome,
@@ -40,15 +38,8 @@ const HomeScreen = () => {
       })
       .catch((e) => {
         console.log('HomeScreen, getUsers' + e)
-      })}
-  
-  /*
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
-    });
-  */
-
+      })
+  }
   useEffect(() => {
     navigation.setOptions({
       //configura a barra superior
@@ -61,7 +52,8 @@ const HomeScreen = () => {
   }, []);
 
   const toFavorites = () => {
-    navigation.navigate("FavoriteScreen")
+    navigation.navigate("FavoriteScreen", { data: data });
+
   }
 
 
