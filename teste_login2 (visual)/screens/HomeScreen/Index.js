@@ -12,7 +12,9 @@ import Favorites from '../../src/assets/imagens/icon_Favorite.png'
 import PECS from '../../src/assets/imagens/icon_PECS.png'
 import TextVoice from '../../src/assets/imagens/icon_TextVoice.png'
 
-const HomeScreen = () => {
+
+
+function HomeScreen() {
   const auth = getAuth(app);
 
   const navigation = useNavigation();
@@ -24,14 +26,18 @@ const HomeScreen = () => {
       headerStyle: { backgroundColor: COLORS.primary },
       headerTitleStyle: { color: COLORS.white },
       headerRight: () => <LogoutButton />
-    })
+    });
   }, []);
 
   const toFavorites = () => {
     navigation.navigate("FavoriteScreen")
-}
+  }
 
-  
+
+  const toTextToSpreech = () => {
+    navigation.navigate("TextToSpreech")
+  }
+
 
   return (
     <View style={styles.container}>
@@ -43,22 +49,26 @@ const HomeScreen = () => {
         />
 
       </View>
-      
-      <View style={styles.divDois}> 
-        <ButtonFunction texto="Comunicação Alternativa Aumentada" root = {PECS}/>
+
+      <View style={styles.divDois}>
+        <ButtonFunction texto="Comunicação Alternativa Aumentada" root={PECS} />
       </View>
 
       <View style={styles.divTres}>
-        <ButtonFunction texto="Texto para áudio" root = {TextVoice}/>
+
+        <ButtonFunction
+          texto="Texto Para Voz"
+          onClick={toTextToSpreech}
+          root={TextVoice} />
       </View>
       <View style={styles.divQuatro}>
-        <ButtonFunction texto="Favoritos" root = {Favorites} onClick={toFavorites}/>
+        <ButtonFunction texto="Favoritos" root={Favorites} onClick={toFavorites} />
       </View>
     </View>
   );
 
-  
-};
+
+}
 
 export default HomeScreen;
 
@@ -68,13 +78,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  divUm: { flex: 2, alignItems: 'center' },
-  divDois: { flex: 3, alignItems: 'center' },
-  divTres: { flex: 3, alignItems: 'center' },
-  divQuatro: { flex: 3, alignItems: 'center' },
+  divUm: { flex: 2, alignItems: 'center', },
+  divDois: { flex: 3, alignItems: 'center', },
+  divTres: { flex: 3, alignItems: 'center', backgroundColor: '#fff',},
+  divQuatro: { flex: 3, alignItems: 'center', },
   image: {
     width: 105,
     height: 100,
     margin: 20,
   },
-});
+})
