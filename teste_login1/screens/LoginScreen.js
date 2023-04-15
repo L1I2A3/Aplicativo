@@ -57,7 +57,7 @@ const LoginScreen = () => {
 
       <View style = {styles.buttonContainer}>
       <TouchableOpacity  // botão login
-            onPress={()=>navigation.navigate('Home')} // "!!!!! mudei porque nao conseguia logar pra testar as outras telas kkk (  {handleLogin}  em vez de {()=>navigation.navigate('Home')}   ) "
+            onPress={()=>navigation.navigate('Home')} // "!!!!! mudei porque nao conseguia logar pra testar as outras telas kkk (  {handleLogin}  em vez de {()=>navigation.navigate('Home')}   ) " TODO: alterar essa parte
             style = {styles.button}
         >
             <Text style = {styles.buttonText}>Login</Text>
