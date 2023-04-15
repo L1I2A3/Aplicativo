@@ -8,6 +8,7 @@ import ForgotPassword from './screens/ForgotPassword';
 import Preload from './screens/Preload';
 import { StatusBar } from 'react-native';
 import { COLORS } from './src/assets/colors';
+import TextToSpeechScreen from './screens/TextToSpeechScreen';
 
 const Stack = createNativeStackNavigator();
 const App = () => {
@@ -41,6 +42,12 @@ const App = () => {
           name="ForgotPassword"
           component={ForgotPassword}
           options={forgotPasswordStyle}
+        />
+
+        <Stack.Screen
+          name="TextToSpreech"
+          component={TextToSpeechScreen}
+        //  options={forgotPasswordStyle}
         />
 
       </Stack.Navigator>

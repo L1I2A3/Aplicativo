@@ -9,7 +9,9 @@ import { COLORS } from '../src/assets/colors'
 import { useEffect } from 'react'
 import LogoutButton from '../src/components/LogoutButton'
 
-const HomeScreen = () => {
+
+
+function HomeScreen() {
   const auth = getAuth(app);
 
   const navigation = useNavigation();
@@ -22,10 +24,13 @@ const HomeScreen = () => {
       headerStyle: { backgroundColor: COLORS.primary },
       headerTitleStyle: { color: COLORS.white },
       headerRight: () => <LogoutButton />
-    })
+    });
   }, []);
 
-  
+  const toTextToSpreech = () => {
+    navigation.navigate("TextToSpreech")
+  }
+
 
   return (
     <View style={styles.container}>
@@ -33,8 +38,7 @@ const HomeScreen = () => {
         <Image
           style={styles.image}
           source={require('../src/assets/imagens/templateLogo.png')}
-          accessibilityLabel='logo do app'
-        />
+          accessibilityLabel='logo do app' />
 
       </View>
 
@@ -43,7 +47,9 @@ const HomeScreen = () => {
       </View>
 
       <View style={styles.divTres}>
-        <ButtonFunction texto="Texto para áudio" />
+        <ButtonFunction
+          texto="Texto Para Voz"
+          onClick={toTextToSpreech} />
       </View>
       <View style={styles.divQuatro}>
         <ButtonFunction texto="Favoritos" />
@@ -51,8 +57,8 @@ const HomeScreen = () => {
     </View>
   );
 
-  
-};
+
+}
 
 export default HomeScreen;
 
@@ -64,7 +70,7 @@ const styles = StyleSheet.create({
   },
   divUm: { flex: 2, alignItems: 'center' },
   divDois: { flex: 3, alignItems: 'center' },
-  divTres: { flex: 3, alignItems: 'center' },
+  divTres: { flex: 3, alignItems: 'center', backgroundColor: '#fff',},
   divQuatro: { flex: 3, alignItems: 'center' },
   image: {
     width: 105,
