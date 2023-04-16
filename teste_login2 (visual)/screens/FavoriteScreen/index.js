@@ -1,17 +1,67 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import React from 'react'
-import { useEffect, useState } from 'react'
+import { getFirestore, collection, getDocs, doc, setDoc } from 'firebase/firestore'
+import { getAuth } from 'firebase/auth'
+import { app } from '../../firebase'
+import React, { useEffect, useState } from 'react'
 import { Container, FlatList } from './style';
 import Item from './item'
-import useRoute from '@react-navigation/native'
+import Button from '../../src/components/Button';
 
-const FavoriteScreen = ( {route} ) => {
-    const { data } = route.params;
+const FavoriteScreen = () => {
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const [data, setData] = useState([]);
 
+    const getTextVoiceCache = async () => {
+        try {
+          const value = await AsyncStorage.getItem('TextVoice')
+          if(value !== null) {
+            setData(value);
+          }
+        } catch(e) {
+          // error reading value
+        }
+      }
+      useEffect (() => {getTextVoiceCache()},)
+
+      removeFew = async () => {
+        const keys = ['TextVoice']
+        try {
+          await AsyncStorage.multiRemove(keys)
+        } catch(e) {
+          // remove error
+        }
+      
+        console.log('Done')
+      }
+    /*
+    const getFav = () => {
+    getDocs(collection(db, "user/" + auth.currentUser.uid + "/fav/TextVoice"))
+      .then((querySnapshot) => {
+        let d = [];
+        querySnapshot.forEach((doc) => {
+          console.log(doc.id, " => ", doc.data());
+          const fav = {
+            id: doc.id,
+            message: doc.data().message,
+          }
+          d.push(fav);
+        })
+        console.log(d);
+        setData(d);
+      })
+      .catch((e) => {
+        console.log('FavoriteScreen, getDoc' + e)
+      })}
+
+      useEffect(() => {
+        getFav();
+      }, []);
+      */
     const routeUser = (item) => {
         console.log(item)
     }
-
+    
     const renderItem = ({ item }) => <Item item={item} onPress={() => routeUser(item)}/>;
 
     return (
@@ -21,6 +71,7 @@ const FavoriteScreen = ( {route} ) => {
                 renderItem={renderItem}
                 keyExtractor={item => item.id}
             />
+            <Button texto='aaa' onClick={removeFew}/>
         </Container>
     );
 };

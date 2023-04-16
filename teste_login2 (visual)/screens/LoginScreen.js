@@ -53,7 +53,7 @@ const LoginScreen = ({ navigation }) => {
             signInWithEmailAndPassword(auth, email, password)
                 .then(() => {
                     if (!auth.currentUser.emailVerified) {
-                        
+
                         Alert.alert('Erro', 'O email deverá ser vericado')
                         return;
                     }

@@ -1,8 +1,9 @@
 import { Text, View, TextInput, StyleSheet, KeyboardAvoidingView, Button, Alert, TouchableOpacity, Image } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import * as Speech from 'expo-speech';
 import { speak } from 'expo-speech';
 import { SelectList } from 'react-native-dropdown-select-list'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
@@ -10,29 +11,38 @@ const TextToSpeechScreen = ({ navigation }) => {
 
   navigation.setOptions({
     //configura a barra superior
-    headerStyle: { backgroundColor: '#88C987'},
+    headerStyle: { backgroundColor: '#88C987' },
     headerTitleStyle: { color: '#fff' },
-   // headerRight: () => <LogoutButton />
+    // headerRight: () => <LogoutButton />
   });
 
-  const [selected,setSelected] = useState("pt-BR")
+  const [selected, setSelected] = useState("pt-BR")
   const [message, setMessage] = useState("")
+  const data = [
 
+    { key: 'pt-BR', value: 'Português Brasil' },
+    { key: 'pt-PT', value: 'Português Portugal' },
+    { key: 'en-US', value: 'US English' },
+    { key: 'es-MX', value: 'Spanish Mexico' },
+    { key: 'fr-FR', value: 'French' },
+    { key: 'it-IT', value: 'Standard Italian' },
+    { key: 'ja-JP', value: 'Japanese' },
+    { key: 'nl-NL', value: 'Standard Dutch' },
+  ]
 
-    const data = [
+  const storeTextVoiceCache = async (value) => {
+    try {
+        value = String(message);
+        console.log(value)
+        await AsyncStorage.setItem('TextVoice', value)
+        console.log('armazenou')
+    } catch (e) {
+       // console.log('TextToSpeechScreen, storeMessageCache' + e)
 
-        {key:'pt-BR', value:'Português Brasil'},
-        {key:'pt-PT', value:'Português Portugal'},
-        {key:'en-US', value:'US English'},
-       {key:'es-MX', value:'Spanish Mexico'},
-        {key:'fr-FR', value:'French'},
-        {key:'it-IT', value:'Standard Italian'},
-        {key:'ja-JP', value:'Japanese'},
-        {key:'nl-NL', value:'Standard Dutch'}, 
-    
-    ]
-
-const speak = () => {
+    }
+  }
+  
+  const speak = () => {
     Speech.speak(message,
       {
         language: selected,
@@ -42,18 +52,16 @@ const speak = () => {
 
   return (
 
- 
+
     <View style={styles.container}>
-
-
       <SelectList
-      style ={styles.selectionList}
-       setSelected={(val) => setSelected(val)} 
-       data={data} 
+        style={styles.selectionList}
+        setSelected={(val) => setSelected(val)}
+        data={data}
         save="key"
         placeHolder="Idioma da voz"
-        defaultOption={{ key:'pt-BR', value:'Português Brasil' }}
-       />
+        defaultOption={{ key: 'pt-BR', value: 'Português Brasil' }}
+      />
 
 
       <TextInput style={styles.input}
@@ -64,25 +72,25 @@ const speak = () => {
       />
 
       <View style={styles.buttonContainer}>
-       
+
         <TouchableOpacity
-          
+
           onPress={speak}
           style={styles.button}
         >
           <Image
-           source={require('../../src/assets/imagens/icon_TextVoice.png')}
-           style={styles.icon}
-          /> 
+            source={require('../../src/assets/imagens/icon_TextVoice.png')}
+            style={styles.icon}
+          />
         </TouchableOpacity>
       </View>
-     
-     <Button
-     title='Favoritos'
-     /> 
 
-    
-       
+      <Button
+        title='Favoritos' onPress={storeTextVoiceCache}
+      />
+
+
+
     </View>
   );
 
@@ -114,7 +122,7 @@ const styles = StyleSheet.create({
     height: 274,
     justifyContent: 'center',
     alignItems: 'center',
-   marginTop: 12,
+    marginTop: 12,
   },
 
   button: {
@@ -127,13 +135,13 @@ const styles = StyleSheet.create({
 
   },
   selectionList: {
-    marginTop:10,
+    marginTop: 10,
   },
   icon: {
     Width: "100%",
     Height: "100%",
     resizeMode: 'cover',
-  }, 
+  },
   favorito: {
     backgroundColor: '#EAD076',
     width: '80%',

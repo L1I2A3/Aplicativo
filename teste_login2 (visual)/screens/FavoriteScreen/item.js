@@ -2,32 +2,31 @@ import React from 'react';
 import styled from 'styled-components/native';
 import { COLORS } from '../../src/assets/colors';
 
-const Button = styled.TouchableHighlight`
+const ButtonMessage = styled.TouchableHighlight`
     background-color: ${COLORS.primary};
     padding: 20px;
     margin-top: 10px;
     border-radius: 10px;
 `;
 
-const TextName = styled.Text`
+const TextMessage = styled.Text`
     font-size: 24px;
     color: ${COLORS.white};
 `;
-
-const TextEmail = styled.Text`
+const Text = styled.Text`
     font-size: 16px;
     color: ${COLORS.white};
+    font-weight: bold;
 `;
 
-const Item = ({item, onPress}) => {
+const Item = ({ item, onPress }) => {
     return (
-        <Button onPress={onPress} underlayColor='transparent'>
+        <ButtonMessage onPress={onPress} underlayColor='transparent'>
             <>
-               <TextName>{item.nome}</TextName>
-                <TextEmail>{item.email}</TextEmail>
-
+                <TextMessage>{item.message}</TextMessage>
+                <Text>Voz</Text>
             </>
-        </Button>
+        </ButtonMessage>
     )
 }
 

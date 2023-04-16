@@ -1,6 +1,6 @@
-import { getAuth, signOut } from 'firebase/auth'
 import { app } from '../../firebase'
-import { getFirestore, collection, getDocs, doc } from 'firebase/firestore'
+import { getFirestore, collection, getDocs } from 'firebase/firestore'
+import { getAuth } from 'firebase/auth'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native'
 import React, { Component } from 'react'
@@ -19,6 +19,7 @@ const HomeScreen = () => {
   const navigation = useNavigation();
   const [data, setData] = useState([]);
   
+
 
   const getUsers = () => {
     getDocs(collection(db, "users"))
