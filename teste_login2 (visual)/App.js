@@ -2,14 +2,15 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from './screens/LoginScreen';
-import HomeScreen from './screens/HomeScreen/';
+import HomeScreen from './screens/HomeScreen/Index';
 import FavoriteScreen from './screens/FavoriteScreen/';
 import RegisterScreen from './screens/RegisterScreen';
 import ForgotPassword from './screens/ForgotPassword';
 import Preload from './screens/Preload';
 import { StatusBar } from 'react-native';
 import { COLORS } from './src/assets/colors';
-import TextToSpeechScreen from './screens/TextToSpeechScreen';
+import TextToSpeechScreen from './screens/TextToSpeechScreen/TextToSpeechScreen';
+
 
 const Stack = createNativeStackNavigator();
 const App = () => {

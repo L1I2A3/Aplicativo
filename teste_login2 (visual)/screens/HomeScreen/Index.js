@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
   },
   divUm: { flex: 2, alignItems: 'center', },
   divDois: { flex: 3, alignItems: 'center', },
-  divTres: { flex: 3, alignItems: 'center', backgroundColor: '#fff', },
+  divTres: { flex: 3, alignItems: 'center', },
   divQuatro: { flex: 3, alignItems: 'center', },
   image: {
     width: 105,
