@@ -3,9 +3,10 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { Container, FlatList } from './style';
 import Item from './item'
+import useRoute from '@react-navigation/native'
 
-const FavoriteScreen = () => {
-    const [data, setData] = useState([])
+const FavoriteScreen = ( {route} ) => {
+    const { data } = route.params;
 
     const routeUser = (item) => {
         console.log(item)
