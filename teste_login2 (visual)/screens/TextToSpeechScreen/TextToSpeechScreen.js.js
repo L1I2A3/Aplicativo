@@ -13,7 +13,7 @@ const TextToSpeechScreen = ({ navigation }) => {
     //configura a barra superior
     headerStyle: { backgroundColor: '#88C987' },
     headerTitleStyle: { color: '#fff' },
-    // headerRight: () => <LogoutButton />
+    title: 'Texto para Voz',
   });
 
   const [selected, setSelected] = useState("pt-BR")
@@ -34,8 +34,15 @@ const TextToSpeechScreen = ({ navigation }) => {
     try {
         value = String(message);
         console.log(value)
-        await AsyncStorage.setItem('TextVoice', value)
+        let keys = []
+        
+        keys = await AsyncStorage.getAllKeys()
+
+        if(keys != null )
+        await AsyncStorage
+        /*await AsyncStorage.setItem('TextVoice', value)
         console.log('armazenou')
+        */
     } catch (e) {
        // console.log('TextToSpeechScreen, storeMessageCache' + e)
 

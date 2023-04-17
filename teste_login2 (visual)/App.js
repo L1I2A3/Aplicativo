@@ -10,6 +10,7 @@ import Preload from './screens/Preload';
 import { StatusBar } from 'react-native';
 import { COLORS } from './src/assets/colors';
 import TextToSpeechScreen from './screens/TextToSpeechScreen/TextToSpeechScreen.js';
+import PecsScreen from './screens/PecsScreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -54,6 +55,12 @@ const App = () => {
         <Stack.Screen
           name="TextToSpreech"
           component={TextToSpeechScreen}
+        //options={forgotPasswordStyle}
+        />
+
+        <Stack.Screen
+          name="Pecs"
+          component={PecsScreen}
         //options={forgotPasswordStyle}
         />
 

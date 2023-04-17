@@ -62,6 +62,10 @@ const HomeScreen = () => {
     navigation.navigate("TextToSpreech")
   }
 
+  const toPecs = () => {
+    navigation.navigate("Pecs")
+  }
+
 
   return (
     <View style={styles.container}>
@@ -75,7 +79,8 @@ const HomeScreen = () => {
       </View>
 
       <View style={styles.divDois}>
-        <ButtonFunction texto="Comunicação Alternativa Aumentada" root={PECS} />
+        <ButtonFunction texto="Comunicação Alternativa Aumentada" root={PECS} 
+        onClick={toPecs}/>
       </View>
 
       <View style={styles.divTres}>

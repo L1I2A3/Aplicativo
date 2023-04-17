@@ -10,13 +10,21 @@ import Button from '../../src/components/Button';
 const FavoriteScreen = () => {
     const auth = getAuth(app);
     const db = getFirestore(app);
+
     const [data, setData] = useState([]);
 
     const getTextVoiceCache = async () => {
         try {
           const value = await AsyncStorage.getItem('TextVoice')
           if(value !== null) {
-            setData(value);
+            let d = [];
+            const fav = {
+              id: value.id,
+              message: value,
+            }
+            d.push(fav);
+            setData(d);
+           console.log(value)
           }
         } catch(e) {
           // error reading value
