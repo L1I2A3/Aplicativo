@@ -34,15 +34,9 @@ const TextToSpeechScreen = ({ navigation }) => {
     try {
         value = String(message);
         console.log(value)
-        let keys = []
-        
-        keys = await AsyncStorage.getAllKeys()
-
-        if(keys != null )
-        await AsyncStorage
-        /*await AsyncStorage.setItem('TextVoice', value)
+        await AsyncStorage.setItem('TextVoice', value)
         console.log('armazenou')
-        */
+        
     } catch (e) {
        // console.log('TextToSpeechScreen, storeMessageCache' + e)
 

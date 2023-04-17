@@ -294,4 +294,4 @@ const PecsScreen = () => {
   );
 };
 
-export default PacsScreen;
+export default PecsScreen;
