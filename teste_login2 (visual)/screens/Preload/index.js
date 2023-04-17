@@ -24,7 +24,7 @@ const Preload = ({navigation}) => {
 
     const loginUser = async () => {
         const user = await getUserCache();
-        if (user && user.password) {
+        if (user && user.password && user.email) {
             console.log(user.email);
             console.log(user.password);
             //se ja estiver salvo em cache (logado previametne) ele vai direto pra home
@@ -39,7 +39,7 @@ const Preload = ({navigation}) => {
                     )
                 })
                 .catch((e) => {
-                    console.log('handleSignup' + e)
+                    console.log('loginUser' + e)
                     switch (e.code) {
                         case 'auth/user-not-found':
                             Alert.alert('Erro', 'Usuário não cadastrado')
@@ -76,7 +76,7 @@ const Preload = ({navigation}) => {
 
     return (
         <Container>
-            <Image source={require('../../src/assets/imagens/templateLogo.png')}
+            <Image source={require('../../src/assets/imagens/Logo.png')}
                 accessibilityLabel="logo do aplicativo CAAmaleão"
             >
 

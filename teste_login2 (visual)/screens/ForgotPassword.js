@@ -58,7 +58,7 @@ const ForgotPassword = ({ navigation }) => {
         
           <Image
             style={styles.image}
-            source={require('../src/assets/imagens/templateLogo.png')}
+            source={require('../src/assets/imagens/Logo.png')}
             accessibilityLabel='logo do app'
           />
           <TextInput
