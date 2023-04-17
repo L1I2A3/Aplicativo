@@ -22,12 +22,14 @@ const TextToSpeechScreen = ({ navigation }) => {
 
     { key: 'pt-BR', value: 'Português Brasil' },
     { key: 'pt-PT', value: 'Português Portugal' },
-    { key: 'en-US', value: 'US English' },
-    { key: 'es-MX', value: 'Spanish Mexico' },
-    { key: 'fr-FR', value: 'French' },
-    { key: 'it-IT', value: 'Standard Italian' },
-    { key: 'ja-JP', value: 'Japanese' },
-    { key: 'nl-NL', value: 'Standard Dutch' },
+    { key: 'en-US', value: 'Inglês EUA' },
+    { key: 'es-MX', value: 'Espanhol Mexico' },
+    { key: 'es-ES', value: 'Espanhol Esapanha' },
+    { key: 'fr-FR', value: 'Francês' },
+    { key: 'it-IT', value: 'Italiano' },
+    { key: 'ja-JP', value: 'Japonês' },
+    { key: 'nl-NL', value: 'Alemão' },
+
   ]
 
   const storeTextVoiceCache = async (value) => {

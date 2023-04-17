@@ -84,6 +84,11 @@ const Imagens = () => {
     
   };
 
+  const handleApagarPressionado = () => {
+    textoFormado.length = 0;
+    setImagemSelecionada(textoFormado);
+  }
+
 
   const speak = () => {
     Speech.speak(imagemSelecionada,
@@ -196,7 +201,7 @@ const Imagens = () => {
       <View style={styles.row}>
         <View style={styles.formedText}>
           <TextInput style={styles.paragraph} 
-          value={textoFormado.join(' ')} 
+          value={imagemSelecionada} 
           onChangeText={setImagemSelecionada}
           />
         </View>
@@ -211,7 +216,18 @@ const Imagens = () => {
             onPress={speak}
           /></Text>
         </View>
+
+        
       </View>
+
+      <View>
+          <TouchableOpacity
+            onPress={() => handleApagarPressionado()}
+            style={[ styles.button, {backgroundColor: 'coral', borderWidth: 0} ]}>
+            <Text>Apagar</Text>
+          </TouchableOpacity>
+      </View>
+
       </ScrollView>
     </>
   );
