@@ -1,9 +1,10 @@
-import { Text, View, TextInput, StyleSheet, KeyboardAvoidingView, Button, Alert, TouchableOpacity, Image } from 'react-native'
+import { Text, View, TextInput, StyleSheet, KeyboardAvoidingView, Alert, TouchableOpacity, Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import * as Speech from 'expo-speech';
 import { speak } from 'expo-speech';
 import { SelectList } from 'react-native-dropdown-select-list'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Button from '../../src/components/Button';
 
 
 
@@ -89,7 +90,7 @@ const TextToSpeechScreen = ({ navigation }) => {
       </View>
 
       <Button
-        title='Favoritos' onPress={storeTextVoiceCache}
+        texto='Adicionar texto aos Favoritos' onClick={storeTextVoiceCache}
       />
 
 

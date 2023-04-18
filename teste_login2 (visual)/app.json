@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "teste_login1",
+    "name": "CAAmaleão",
     "slug": "teste_login1",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./src/assets/imagens/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./src/assets/imagens/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -22,12 +22,18 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/imagens/adaptive-icon.png",
+        "foregroundImage": "./src/assets/imagens/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.lia123.teste_login1"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./src/assets/imagens/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "3c599700-6bc1-4e42-a238-debb7877c90a"
+      }
     }
   }
 }

@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import * as Speech from 'expo-speech';
 import { AntDesign } from '@expo/vector-icons';
+import { COLORS } from '../src/assets/colors'
 
 const image1 = 'https://static.arasaac.org/pictograms/25556/25556_300.png';
 const image1String = 'Arroz';
@@ -51,18 +52,18 @@ const PreviewLayout = ({
   setSelectedValue,
 }) => (
 
-  <View style={{padding: 10, flex: 80}}>
-    <Text style={{textAlign: 'center', marginBottom: 10, fontSize: 24}}>{titulo}</Text> 
+  <View>
+    <Text style={styles.textPreview}>{titulo}</Text>
     <View style={styles.row}>
       {values.map(value => (
         <TouchableOpacity
           key={value}
           onPress={() => setSelectedValue(value)}
-          style={[ styles.button, selectedValue === value && {backgroundColor: 'coral', borderWidth: 0} ]}>
+          style={[styles.button, selectedValue === value && { backgroundColor: 'coral', borderWidth: 0 }]}>
           <Text
             style={[
               styles.buttonLabel,
-              selectedValue === value && {color: 'white'},
+              selectedValue === value && { color: 'white' },
             ]}>
             {value}
           </Text>
@@ -81,7 +82,7 @@ const Imagens = () => {
   const handleImagemPressionada = (nomeImagem) => {
     textoFormado.push(nomeImagem);
     setImagemSelecionada(textoFormado.join(' '));
-    
+
   };
 
   const handleApagarPressionado = () => {
@@ -99,134 +100,134 @@ const Imagens = () => {
   }
 
 
-  return(
+  return (
     <>
 
- <ScrollView>
-      <View style={styles.container}> 
+      <ScrollView>
+        <View style={styles.container}>
 
 
-          <TouchableOpacity onPress={() => handleImagemPressionada(image1String)} style={{borderWidth: 1, borderColor: 'black' }}>  
-            <View> 
+          <TouchableOpacity onPress={() => handleImagemPressionada(image1String)} style={{ borderWidth: 1, borderColor: 'black' }}>
+            <View>
               <Image
-                  source = {{uri: image1}} // Defina a URI da imagem como a fonte
-                  style={styles.imageCAA} // Defina o estilo da imagem
+                source={{ uri: image1 }} // Defina a URI da imagem como a fonte
+                style={styles.imageCAA} // Defina o estilo da imagem
               />
               <Text style={styles.formedText1}>{image1String}</Text>
             </View>
           </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => handleImagemPressionada(image2String)} style={{borderWidth: 1, borderColor: 'black' }}>
-          <View>
-            <Image
-                source = {{ uri: image2 }} // Defina a URI da imagem como a fonte
+          <TouchableOpacity onPress={() => handleImagemPressionada(image2String)} style={{ borderWidth: 1, borderColor: 'black' }}>
+            <View>
+              <Image
+                source={{ uri: image2 }} // Defina a URI da imagem como a fonte
                 style={styles.imageCAA} // Defina o estilo da imagem
-            />
-            <Text style={styles.formedText1}>{image2String}</Text>
-          </View>
-        </TouchableOpacity>
+              />
+              <Text style={styles.formedText1}>{image2String}</Text>
+            </View>
+          </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => handleImagemPressionada(image3String)} style={{borderWidth: 1, borderColor: 'black' }}>
-          <View>
-            <Image
-                source = {{ uri: image3 }} // Defina a URI da imagem como a fonte
+          <TouchableOpacity onPress={() => handleImagemPressionada(image3String)} style={{ borderWidth: 1, borderColor: 'black' }}>
+            <View>
+              <Image
+                source={{ uri: image3 }} // Defina a URI da imagem como a fonte
                 style={styles.imageCAA} // Defina o estilo da imagem
-            />
-            <Text style={styles.formedText1}>{image3String}</Text>
-          </View>
-        </TouchableOpacity>
+              />
+              <Text style={styles.formedText1}>{image3String}</Text>
+            </View>
+          </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => handleImagemPressionada(image4String)} style={{borderWidth: 1, borderColor: 'black' }}>
-          <View>
-            <Image
-                source = {{ uri: image4 }} // Defina a URI da imagem como a fonte
+          <TouchableOpacity onPress={() => handleImagemPressionada(image4String)} style={{ borderWidth: 1, borderColor: 'black' }}>
+            <View>
+              <Image
+                source={{ uri: image4 }} // Defina a URI da imagem como a fonte
                 style={styles.imageCAA} // Defina o estilo da imagem
-            />
-            <Text style={styles.formedText1}>{image4String}</Text>
-          </View>
-        </TouchableOpacity>
-        
-        <TouchableOpacity onPress={() => handleImagemPressionada(image5String)} style={{borderWidth: 1, borderColor: 'black' }}>
-          <View>
-            <Image
-                source = {{ uri: image5 }} // Defina a URI da imagem como a fonte
+              />
+              <Text style={styles.formedText1}>{image4String}</Text>
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => handleImagemPressionada(image5String)} style={{ borderWidth: 1, borderColor: 'black' }}>
+            <View>
+              <Image
+                source={{ uri: image5 }} // Defina a URI da imagem como a fonte
                 style={styles.imageCAA} // Defina o estilo da imagem
-            />
-            <Text style={styles.formedText1}>{image5String}</Text>
-          </View>
-        </TouchableOpacity>
+              />
+              <Text style={styles.formedText1}>{image5String}</Text>
+            </View>
+          </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => handleImagemPressionada(image6String)} style={{borderWidth: 1, borderColor: 'black' }}>
-          <View>
-            <Image
-                source = {{ uri: image6 }} // Defina a URI da imagem como a fonte
+          <TouchableOpacity onPress={() => handleImagemPressionada(image6String)} style={{ borderWidth: 1, borderColor: 'black' }}>
+            <View>
+              <Image
+                source={{ uri: image6 }} // Defina a URI da imagem como a fonte
                 style={styles.imageCAA} // Defina o estilo da imagem
-            />
-            <Text style={styles.formedText1}>{image6String}</Text>
-          </View>
-        </TouchableOpacity>
+              />
+              <Text style={styles.formedText1}>{image6String}</Text>
+            </View>
+          </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => handleImagemPressionada(image7String)} style={{borderWidth: 1, borderColor: 'black' }}>
-          <View>
-            <Image
-                source = {{ uri: image7 }} // Defina a URI da imagem como a fonte
+          <TouchableOpacity onPress={() => handleImagemPressionada(image7String)} style={{ borderWidth: 1, borderColor: 'black' }}>
+            <View>
+              <Image
+                source={{ uri: image7 }} // Defina a URI da imagem como a fonte
                 style={styles.imageCAA} // Defina o estilo da imagem
-            />
-            <Text style={styles.formedText1}>{image7String}</Text>
-          </View>
-        </TouchableOpacity>
+              />
+              <Text style={styles.formedText1}>{image7String}</Text>
+            </View>
+          </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => handleImagemPressionada(image8String)} style={{borderWidth: 1, borderColor: 'black'}}>
-          <View>
-            <Image
-                source = {{ uri: image8 }} // Defina a URI da imagem como a fonte
+          <TouchableOpacity onPress={() => handleImagemPressionada(image8String)} style={{ borderWidth: 1, borderColor: 'black' }}>
+            <View>
+              <Image
+                source={{ uri: image8 }} // Defina a URI da imagem como a fonte
                 style={styles.imageCAA} // Defina o estilo da imagem
-            />
-            <Text style={styles.formedText1}>{image8String}</Text>
-          </View>
-        </TouchableOpacity>
+              />
+              <Text style={styles.formedText1}>{image8String}</Text>
+            </View>
+          </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => handleImagemPressionada(image9String)} style={{borderWidth: 1, borderColor: 'black'}}>
-          <View>
-            <Image
-                source = {{ uri: image9 }} // Defina a URI da imagem como a fonte
+          <TouchableOpacity onPress={() => handleImagemPressionada(image9String)} style={{ borderWidth: 1, borderColor: 'black' }}>
+            <View>
+              <Image
+                source={{ uri: image9 }} // Defina a URI da imagem como a fonte
                 style={styles.imageCAA} // Defina o estilo da imagem
-            />
-            <Text style={styles.formedText1}>{image9String}</Text>
-          </View>
-        </TouchableOpacity>
+              />
+              <Text style={styles.formedText1}>{image9String}</Text>
+            </View>
+          </TouchableOpacity>
 
-      </View>
-
-      <View style={styles.row}>
-        <View style={styles.formedText}>
-          <TextInput style={styles.paragraph} 
-          value={imagemSelecionada} 
-          onChangeText={setImagemSelecionada}
-          />
         </View>
 
-        <View style={{ marginTop: 15, borderRightWidth: 6, borderRightColor: 'white'}} >
-          <Text><AntDesign 
-          name="star" size={24} color="black" 
-            onPress
+        <View style={styles.row}>
+          <View style={styles.formedText}>
+            <TextInput style={styles.paragraph}
+              value={imagemSelecionada}
+              onChangeText={setImagemSelecionada}
+            />
+          </View>
+
+          <View style={{ marginTop: 15, borderRightWidth: 6, borderRightColor: 'white' }} >
+            <Text><AntDesign
+              name="star" size={24} color="black"
+              onPress
             /></Text>
-          <Text><AntDesign 
-          name="sound" size={24} color="black" 
-            onPress={speak}
-          /></Text>
+            <Text><AntDesign
+              name="sound" size={24} color="black"
+              onPress={speak}
+            /></Text>
+          </View>
+
+
         </View>
 
-        
-      </View>
-
-      <View>
+        <View>
           <TouchableOpacity
             onPress={() => handleApagarPressionado()}
-            style={[ styles.button, {backgroundColor: 'coral', borderWidth: 0} ]}>
+            style={[styles.button, { backgroundColor: 'coral', borderWidth: 0 }]}>
             <Text>Apagar</Text>
           </TouchableOpacity>
-      </View>
+        </View>
 
       </ScrollView>
     </>
@@ -234,6 +235,13 @@ const Imagens = () => {
 };
 
 const styles = StyleSheet.create({
+
+  textPreview: {
+    textAlign: 'center',
+    alignItems: 'center',
+    marginBottom: 10,
+    fontSize: 24
+  },
   formedText1: {
     justifyContent: 'center',
     paddingHorizontal: 10,
@@ -241,10 +249,12 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     minWidth: '80%',
     textAlign: 'center', //alinhamento com a imagem
-    },
+  },
   imageCAA: {
     width: 80,
     height: 80,
+    alignItems: 'center',
+    
   },
   formedText: {
     flex: 1,
@@ -293,20 +303,21 @@ const styles = StyleSheet.create({
     marginBottom: 6,
     minWidth: '30%',
     textAlign: 'center',
+    alignItems: "center",
   },
   buttonLabel: {
     fontSize: 12,
     fontWeight: '500',
-    color: 'coral',
+    color: COLORS.primary,
   },
 });
 
 const PecsScreen = () => {
   return (
-    <View>
+    <ScrollView>
       <FlexDirectionBasics />
       <Imagens />
-    </View>
+    </ScrollView>
   );
 };
 

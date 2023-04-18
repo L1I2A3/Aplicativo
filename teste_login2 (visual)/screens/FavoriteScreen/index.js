@@ -80,7 +80,7 @@ const FavoriteScreen = () => {
         renderItem={renderItem}
         keyExtractor={item => item.id}
       />
-      <Button texto='aaa' onClick={removeFew} />
+      <Button texto='Excluir Itens Salvos' onClick={removeFew} />
     </Container>
   );
 };
