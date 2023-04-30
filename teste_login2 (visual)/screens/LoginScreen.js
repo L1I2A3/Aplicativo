@@ -18,6 +18,7 @@ const LoginScreen = ({ navigation }) => {
     const storeUserCache = async (value) => {
         try {
             value.password = password;
+            value.email = email;
             const jsonValue = JSON.stringify(value)
             await AsyncStorage.setItem('user', jsonValue)
             navigation.dispatch(
@@ -36,10 +37,10 @@ const LoginScreen = ({ navigation }) => {
         getDoc(doc(db, "users", auth.currentUser.uid))
             .then((doc) => {
                 if (doc.exists) {
+                    console.log("getUser", doc.data())
                     storeUserCache(doc.data());
                 } else {
                     console.log("O documento não existe");
-
                 }
             })
             .catch((e) => {
@@ -57,8 +58,10 @@ const LoginScreen = ({ navigation }) => {
                         Alert.alert('Erro', 'O email deverá ser vericado')
                         return;
                     }
+                    
                     getUser();
-                })
+                }   
+                )
                 .catch((e) => {
                     console.log('handleSignIn' + e)
                     switch (e.code) {

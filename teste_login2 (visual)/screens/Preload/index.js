@@ -24,7 +24,7 @@ const Preload = ({navigation}) => {
 
     const loginUser = async () => {
         const user = await getUserCache();
-        if (user && user.password && user.email) {
+        if (user) {
             console.log(user.email);
             console.log(user.password);
             //se ja estiver salvo em cache (logado previametne) ele vai direto pra home
@@ -39,7 +39,7 @@ const Preload = ({navigation}) => {
                     )
                 })
                 .catch((e) => {
-                    console.log('loginUser' + e)
+                    console.log('Preload, login' + e)
                     switch (e.code) {
                         case 'auth/user-not-found':
                             Alert.alert('Erro', 'Usuário não cadastrado')

@@ -1,16 +1,17 @@
-import { Text, View, TextInput, StyleSheet, KeyboardAvoidingView, Alert, TouchableOpacity, Image } from 'react-native'
+import { View, TextInput, StyleSheet, TouchableOpacity, Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import * as Speech from 'expo-speech';
 import { speak } from 'expo-speech';
 import { SelectList } from 'react-native-dropdown-select-list'
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import Button from '../../src/components/Button';
+import { getAuth } from 'firebase/auth'
+import { app } from '../../firebase'
+import { getFirestore, doc, updateDoc, arrayUnion, } from 'firebase/firestore'
+import { CommonActions } from '@react-navigation/native';
 
 
-
-const TextToSpeechScreen = ({ navigation }) => {
-
-  navigation.setOptions({
+const TextToSpeechScreen = (props) => {
+  props.navigation.setOptions({
     //configura a barra superior
     headerStyle: { backgroundColor: '#88C987' },
     headerTitleStyle: { color: '#fff' },
@@ -32,20 +33,21 @@ const TextToSpeechScreen = ({ navigation }) => {
     { key: 'nl-NL', value: 'Alemão' },
 
   ]
-
-  const storeTextVoiceCache = async (value) => {
-    try {
-        value = String(message);
-        console.log(value)
-        await AsyncStorage.setItem('TextVoice', value)
-        console.log('armazenou')
-        
-    } catch (e) {
-       // console.log('TextToSpeechScreen, storeMessageCache' + e)
-
+  //Aqui estou pegando o item deixado como parametro numa rota anterior (vinda de navigate)
+  useEffect(() => {
+    if(props.route.params != undefined){
+      setMessage(props.route.params.user.message)
     }
+  }, [])
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+
+  const teste = () => {
+    updateDoc(doc(db, "users", auth.currentUser.uid, "fav", auth.currentUser.uid), { message: arrayUnion(message) })
+    console.log('algo ocorreu')
   }
-  
+
   const speak = () => {
     Speech.speak(message,
       {
@@ -90,7 +92,7 @@ const TextToSpeechScreen = ({ navigation }) => {
       </View>
 
       <Button
-        texto='Adicionar texto aos Favoritos' onClick={storeTextVoiceCache}
+        texto='Adicionar texto aos Favoritos' onClick={teste}
       />
 
 

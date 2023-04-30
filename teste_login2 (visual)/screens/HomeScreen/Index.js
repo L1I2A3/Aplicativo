@@ -19,8 +19,6 @@ const HomeScreen = () => {
   const navigation = useNavigation();
   const [data, setData] = useState([]);
   
-
-
   const getUsers = () => {
     getDocs(collection(db, "users"))
       .then((querySnapshot) => {
@@ -59,7 +57,7 @@ const HomeScreen = () => {
 
 
   const toTextToSpreech = () => {
-    navigation.navigate("TextToSpreech")
+    navigation.navigate("TextToSpeech")
   }
 
   const toPecs = () => {

@@ -26,11 +26,10 @@ const RegisterScreen = ({ navigation }) => {
     if (email !== '' && password !== '' && confPassword !== '' && name !== '') {
       createUserWithEmailAndPassword(auth, email, password)
         .then(() => {
-          let userF = auth.currentUser;
           let user = {}
-          user.nome = name;
-          user.email = email;
-          setDoc(doc(db, "users", userF.uid), user)
+            user.nome = name;
+            user.email = email;
+          setDoc(doc(db, "users", auth.currentUser.uid), user)
             .then(() => {
               console.log("Sign up, setDoc: usuário adicionado")
               sendEmailVerification(auth.currentUser) //TODO: REMODELAR O EMAIL DE REGISTRO
