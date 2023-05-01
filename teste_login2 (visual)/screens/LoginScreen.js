@@ -37,7 +37,7 @@ const LoginScreen = ({ navigation }) => {
         getDoc(doc(db, "users", auth.currentUser.uid))
             .then((doc) => {
                 if (doc.exists) {
-                    console.log("getUser", doc.data())
+                    //console.log("getUser", doc.data())
                     storeUserCache(doc.data());
                 } else {
                     console.log("O documento não existe");

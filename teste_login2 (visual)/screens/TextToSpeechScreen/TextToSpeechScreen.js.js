@@ -1,12 +1,11 @@
 import { View, TextInput, StyleSheet, TouchableOpacity, Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import * as Speech from 'expo-speech';
-import { speak } from 'expo-speech';
 import { SelectList } from 'react-native-dropdown-select-list'
 import Button from '../../src/components/Button';
 import { getAuth } from 'firebase/auth'
 import { app } from '../../firebase'
-import { getFirestore, doc, updateDoc, arrayUnion, } from 'firebase/firestore'
+import { getFirestore, doc, updateDoc, arrayUnion, setDoc } from 'firebase/firestore'
 import { CommonActions } from '@react-navigation/native';
 
 
@@ -43,9 +42,9 @@ const TextToSpeechScreen = (props) => {
   const db = getFirestore(app);
 
 
-  const teste = () => {
-    updateDoc(doc(db, "users", auth.currentUser.uid, "fav", auth.currentUser.uid), { message: arrayUnion(message) })
-    console.log('algo ocorreu')
+  const addToFav = () => {
+    setDoc(doc(db, "users", auth.currentUser.uid, "fav", "TextToVoice"), { message: arrayUnion(message) }, { merge: true })
+    console.log('TextToSpeechScreen, addToFav: adicionado ao favorito')
   }
 
   const speak = () => {
@@ -92,7 +91,7 @@ const TextToSpeechScreen = (props) => {
       </View>
 
       <Button
-        texto='Adicionar texto aos Favoritos' onClick={teste}
+        texto='Adicionar texto aos Favoritos' onClick={addToFav}
       />
 
 

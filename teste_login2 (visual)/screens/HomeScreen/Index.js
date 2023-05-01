@@ -77,7 +77,7 @@ const HomeScreen = () => {
       </View>
 
       <View style={styles.divDois}>
-        <ButtonFunction texto="Comunicação Alternativa Aumentada" root={PECS} 
+        <ButtonFunction texto="Prancheta de Comunicação" root={PECS} 
         onClick={toPecs}/>
       </View>
 

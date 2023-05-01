@@ -25,8 +25,8 @@ const Preload = ({navigation}) => {
     const loginUser = async () => {
         const user = await getUserCache();
         if (user) {
-            console.log(user.email);
-            console.log(user.password);
+            //console.log(user.email);
+            //console.log(user.password);
             //se ja estiver salvo em cache (logado previametne) ele vai direto pra home
             signInWithEmailAndPassword(auth, user.email, user.password)
                 .then(() => {
@@ -58,7 +58,7 @@ const Preload = ({navigation}) => {
                 )
         } else {
             //se não estiver salvo em cache ele vai para login para entrar no app
-            console.log("para login")
+            //console.log("para login")
             navigation.dispatch(
                 CommonActions.reset({
                     index: 0,

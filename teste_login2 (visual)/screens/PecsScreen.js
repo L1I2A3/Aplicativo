@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Text,
   View,
@@ -12,6 +12,9 @@ import {
 import * as Speech from 'expo-speech';
 import { AntDesign } from '@expo/vector-icons';
 import { COLORS } from '../src/assets/colors'
+import { getAuth } from 'firebase/auth'
+import { app } from '../firebase'
+import { getFirestore, doc, updateDoc, arrayUnion, setDoc } from 'firebase/firestore'
 
 const image1 = 'https://static.arasaac.org/pictograms/25556/25556_300.png';
 const image1String = 'Arroz';
@@ -34,8 +37,8 @@ const image9String = 'não quero';
 
 const FlexDirectionBasics = () => {
   const [flexDirection, setflexDirection] = useState('column');
-
   return (
+
     <PreviewLayout style={styles.row}
       titulo="Figuras" //texto
       values={['Alimentação', 'Trabalho', 'Banheiro', 'Família', 'Rotina', 'Escola']}
@@ -76,8 +79,15 @@ const PreviewLayout = ({
 var textoFormado = [];
 
 const Imagens = () => {
+  
+  
+  const auth = getAuth(app);
+  const db = getFirestore(app);
 
   const [imagemSelecionada, setImagemSelecionada] = useState('');
+
+  
+
 
   const handleImagemPressionada = (nomeImagem) => {
     textoFormado.push(nomeImagem);
@@ -97,6 +107,10 @@ const Imagens = () => {
         language: 'pt-BR',
         rate: 0.5,
       });
+  }
+  const addToFav = () => {
+    setDoc(doc(db, "users", auth.currentUser.uid, "fav", "PdC"), { message: arrayUnion(imagemSelecionada) }, { merge: true })
+    console.log('PecsScreen, addToFav: adicionado ao favorito')
   }
 
 
@@ -210,7 +224,7 @@ const Imagens = () => {
           <View style={{ marginTop: 15, borderRightWidth: 6, borderRightColor: 'white' }} >
             <Text><AntDesign
               name="star" size={24} color="black"
-              onPress
+              onPress={()=>addToFav()}
             /></Text>
             <Text><AntDesign
               name="sound" size={24} color="black"

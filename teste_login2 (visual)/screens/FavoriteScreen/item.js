@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 import { COLORS } from '../../src/assets/colors';
 
 const ButtonMessage = styled.TouchableHighlight`
-    background-color: ${COLORS.primary};
+    background-color: ${props => props.color};
     padding: 20px;
     margin-top: 10px;
     border-radius: 10px;
@@ -19,12 +19,12 @@ const Text = styled.Text`
     font-weight: bold;
 `;
 
-const Item = ({ item, onPress }) => {
+const Item = ({ item, onPress}) => {
     return (
-        <ButtonMessage onPress={onPress} underlayColor='transparent'>
+        <ButtonMessage onPress={onPress} underlayColor='transparent' color = {item.color}>
             <>
                 <TextMessage>{item.message}</TextMessage>
-                <Text>Voz</Text>
+                <Text>{item.src}</Text>
             </>
         </ButtonMessage>
     )
