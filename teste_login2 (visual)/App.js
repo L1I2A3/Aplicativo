@@ -6,12 +6,11 @@ import HomeScreen from './screens/HomeScreen/Index';
 import Preload from './screens/Preload';
 import TextToSpeechScreen from './screens/TextToSpeechScreen/TextToSpeechScreen.js';
 import PecsScreen from './screens/PecsScreen';
+import TelaTeste from './screens/TelaTeste';
 import { StyleSheet, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { COLORS } from './src/assets/colors';
-
-
 
 const Stack = createNativeStackNavigator();
 const App = () => {
@@ -61,6 +60,11 @@ const App = () => {
         <Stack.Screen
           name="Pecs"
           component={PecsScreen}
+        //options={forgotPasswordStyle}
+        />
+        <Stack.Screen
+          name="Teste"
+          component={TelaTeste}
         //options={forgotPasswordStyle}
         />
 

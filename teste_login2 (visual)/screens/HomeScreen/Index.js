@@ -63,6 +63,9 @@ const HomeScreen = () => {
   const toPecs = () => {
     navigation.navigate("Pecs")
   }
+  const toTeste = () => {
+    navigation.navigate("Teste")
+  }
 
 
   return (
@@ -77,7 +80,8 @@ const HomeScreen = () => {
       </View>
 
       <View style={styles.divDois}>
-        <ButtonFunction texto="Prancheta de Comunicação" root={PECS} 
+        <ButtonFunction texto="Prancheta de Comunicação" 
+        root={PECS} 
         onClick={toPecs}/>
       </View>
 
@@ -89,7 +93,13 @@ const HomeScreen = () => {
           root={TextVoice} />
       </View>
       <View style={styles.divQuatro}>
-        <ButtonFunction texto="Favoritos" root={Favorites} onClick={toFavorites} />
+        <ButtonFunction texto="Favoritos" 
+        root={Favorites} 
+        onClick={toFavorites} />
+      </View>
+      <View style={styles.divCinco}>
+        <ButtonFunction texto="Teste" 
+        onClick={toTeste} />
       </View>
     </View>
   );
@@ -109,6 +119,7 @@ const styles = StyleSheet.create({
   divDois: { flex: 3, alignItems: 'center', },
   divTres: { flex: 3, alignItems: 'center', },
   divQuatro: { flex: 3, alignItems: 'center', },
+  divCinco: { flex: 3, alignItems: 'center', },
   image: {
     width: 105,
     height: 100,
