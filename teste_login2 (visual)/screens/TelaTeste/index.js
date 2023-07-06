@@ -20,7 +20,7 @@ useEffect(() => {
             changeScreenOrientationRET();
           };
       }, []);
-*/
+
 
 
 import React, { useState, useCallback, useEffect} from "react";
@@ -104,3 +104,4 @@ const styles = StyleSheet.create({
 });
 
 export default TelaTeste;
+*/

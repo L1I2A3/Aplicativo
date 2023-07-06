@@ -1,7 +1,5 @@
 import { app } from '../../firebase'
 import { getFirestore, collection, getDocs } from 'firebase/firestore'
-import { getAuth } from 'firebase/auth'
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native'
 import React, { Component } from 'react'
 import { useNavigation, CommonActions } from '@react-navigation/core'
@@ -63,9 +61,6 @@ const HomeScreen = () => {
   const toPecs = () => {
     navigation.navigate("Pecs")
   }
-  const toTeste = () => {
-    navigation.navigate("Teste")
-  }
 
 
   return (
@@ -96,10 +91,6 @@ const HomeScreen = () => {
         <ButtonFunction texto="Favoritos" 
         root={Favorites} 
         onClick={toFavorites} />
-      </View>
-      <View style={styles.divCinco}>
-        <ButtonFunction texto="Teste" 
-        onClick={toTeste} />
       </View>
     </View>
   );
