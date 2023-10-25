@@ -24,9 +24,9 @@ const Preload = ({navigation}) => {
 
     const loginUser = async () => {
         const user = await getUserCache();
-        if (user && user.password) {
-            console.log(user.email);
-            console.log(user.password);
+        if (user) {
+            //console.log(user.email);
+            //console.log(user.password);
             //se ja estiver salvo em cache (logado previametne) ele vai direto pra home
             signInWithEmailAndPassword(auth, user.email, user.password)
                 .then(() => {
@@ -39,7 +39,7 @@ const Preload = ({navigation}) => {
                     )
                 })
                 .catch((e) => {
-                    console.log('handleSignup' + e)
+                    console.log('Preload, login' + e)
                     switch (e.code) {
                         case 'auth/user-not-found':
                             Alert.alert('Erro', 'Usuário não cadastrado')
@@ -58,7 +58,7 @@ const Preload = ({navigation}) => {
                 )
         } else {
             //se não estiver salvo em cache ele vai para login para entrar no app
-            console.log("para login")
+            //console.log("para login")
             navigation.dispatch(
                 CommonActions.reset({
                     index: 0,
@@ -76,7 +76,7 @@ const Preload = ({navigation}) => {
 
     return (
         <Container>
-            <Image source={require('../../src/assets/imagens/templateLogo.png')}
+            <Image source={require('../../src/assets/imagens/Logo.png')}
                 accessibilityLabel="logo do aplicativo CAAmaleão"
             >
 

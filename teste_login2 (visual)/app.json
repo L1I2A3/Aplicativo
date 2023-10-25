@@ -1,0 +1,42 @@
+{
+  "expo": {
+    "name": "CAAmaleão",
+    "slug": "caamaleao",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./src/assets/imagens/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./src/assets/imagens/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "jsEngine": "jsc",
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "./model/weights.bin"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./src/assets/imagens/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.lia123.teste_login1"
+    },
+    
+    "web": {
+      "favicon": "./src/assets/imagens/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f9b2631a-febd-4226-a6fa-e1dd753bf00a"
+      }
+    },
+    "owner": "lia123"
+  }
+}
