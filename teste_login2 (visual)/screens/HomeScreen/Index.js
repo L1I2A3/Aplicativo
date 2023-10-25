@@ -5,7 +5,7 @@ import React, { Component } from 'react'
 import { useNavigation, CommonActions } from '@react-navigation/core'
 import { COLORS } from '../../src/assets/colors'
 import { useEffect, useState } from 'react'
-import ButtonFunction from '../../src/components/ButtonFunction';
+import ButtonFunction from '../../src/components/ButtonFunctionH';
 import LogoutButton from '../../src/components/LogoutButton'
 import Favorites from '../../src/assets/imagens/icon_Favorite.png'
 import PECS from '../../src/assets/imagens/icon_PECS.png'
@@ -40,7 +40,7 @@ const HomeScreen = () => {
   useEffect(() => {
     navigation.setOptions({
       //configura a barra superior
-      title: 'Usuários', //TODO: como adicionar o nome do usuário automaticamente?
+      title: "Olá", //TODO: como adicionar o nome do usuário automaticamente?
       headerStyle: { backgroundColor: COLORS.primary },
       headerTitleStyle: { color: COLORS.white },
       headerRight: () => <LogoutButton />
@@ -50,9 +50,7 @@ const HomeScreen = () => {
 
   const toFavorites = () => {
     navigation.navigate("FavoriteScreen", { data: data });
-
   }
-
 
   const toTextToSpreech = () => {
     navigation.navigate("TextToSpeech")
@@ -61,36 +59,48 @@ const HomeScreen = () => {
   const toPecs = () => {
     navigation.navigate("Pecs")
   }
+  const toFacial = () => {
+    navigation.navigate("Facial")
+  }
 
 
   return (
     <View style={styles.container}>
+
       <View style={styles.divUm}>
         <Image
           style={styles.image}
           source={require('../../src/assets/imagens/Logo.png')}
           accessibilityLabel='logo do app'
         />
-
       </View>
 
       <View style={styles.divDois}>
-        <ButtonFunction texto="Prancheta de Comunicação" 
+        <ButtonFunction 
+        texto="Prancheta de Comunicação" 
         root={PECS} 
         onClick={toPecs}/>
       </View>
 
       <View style={styles.divTres}>
-
         <ButtonFunction
           texto="Texto Para Voz"
           onClick={toTextToSpreech}
           root={TextVoice} />
       </View>
+
       <View style={styles.divQuatro}>
-        <ButtonFunction texto="Favoritos" 
+        <ButtonFunction 
+        texto="Favoritos" 
         root={Favorites} 
         onClick={toFavorites} />
+      </View>
+
+      <View style={styles.divCinco}>
+        <ButtonFunction 
+        texto="Expressões Faciais" 
+        root={Favorites} 
+        onClick={toFacial} />
       </View>
     </View>
   );
@@ -113,7 +123,7 @@ const styles = StyleSheet.create({
   divCinco: { flex: 3, alignItems: 'center', },
   image: {
     width: 105,
-    height: 100,
+    height: 70,
     margin: 20,
   },
 })

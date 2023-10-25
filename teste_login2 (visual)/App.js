@@ -1,18 +1,22 @@
-import LoginScreen from './screens/LoginScreen';
-import FavoriteScreen from './screens/FavoriteScreen/';
-import RegisterScreen from './screens/RegisterScreen';
-import ForgotPassword from './screens/ForgotPassword';
-import HomeScreen from './screens/HomeScreen/Index';
-import Preload from './screens/Preload';
-import TextToSpeechScreen from './screens/TextToSpeechScreen/TextToSpeechScreen.js';
-import PecsScreen from './screens/PecsScreen';
-//import TelaTeste from './screens/TelaTeste';
+  import LoginScreen from './screens/LoginScreen';
+  import FavoriteScreen from './screens/FavoriteScreen/';
+  import RegisterScreen from './screens/RegisterScreen';
+  import ForgotPassword from './screens/ForgotPassword';
+  import HomeScreen from './screens/HomeScreen/Index';
+  import Preload from './screens/Preload';
+  import TextToSpeechScreen from './screens/TextToSpeechScreen/TextToSpeechScreen.js';
+  import PecsScreen from './screens/PecsScreen';
+  import FacialScreen from './screens/FacialScreen/FacialScreen';
+  import indFacialScreen from './screens/FacialScreen/indFacialScreen';
+  import ExerciseScreen from './screens/FacialScreen/Exercise';
+  //import TelaTeste from './screens/TelaTeste';
 import { StyleSheet, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { COLORS } from './src/assets/colors';
 
 const Stack = createNativeStackNavigator();
+
 const App = () => {
   return (
     <NavigationContainer>
@@ -60,6 +64,22 @@ const App = () => {
         <Stack.Screen
           name="Pecs"
           component={PecsScreen}
+        //options={forgotPasswordStyle}
+        />
+
+        <Stack.Screen
+          name="Facial"
+          component={FacialScreen}
+        //options={forgotPasswordStyle}
+        />
+        <Stack.Screen
+          name="indFacial"
+          component={indFacialScreen}
+        //options={forgotPasswordStyle}
+        />
+        <Stack.Screen
+          name="Exercise"
+          component={ExerciseScreen}
         //options={forgotPasswordStyle}
         />
 

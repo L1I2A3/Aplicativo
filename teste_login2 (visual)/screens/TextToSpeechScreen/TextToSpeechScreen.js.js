@@ -143,8 +143,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   icon: {
-    Width: "100%",
-    Height: "100%",
+    width: "100%",
+    height: "100%",
     resizeMode: 'cover',
   },
   favorito: {

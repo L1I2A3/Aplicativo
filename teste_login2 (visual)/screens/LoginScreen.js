@@ -180,13 +180,13 @@ const styles = StyleSheet.create({
         margin: 10,
         borderBottomColor: COLORS.grey,
         borderBottomWidth: 2,
-        font: '16',
+        fontSize: '16',
         paddingLeft: 2,
         paddingBottom: 1,
 
     },
     textEsqueceuSenha: {
-        font: '15',
+        fontSize: '15',
         color: COLORS.accenSecundary,
         alignSelf: 'flex-end',
         marginTop: 20,
