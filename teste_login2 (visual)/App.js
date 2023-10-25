@@ -1,15 +1,15 @@
-  import LoginScreen from './screens/LoginScreen';
-  import FavoriteScreen from './screens/FavoriteScreen/';
-  import RegisterScreen from './screens/RegisterScreen';
-  import ForgotPassword from './screens/ForgotPassword';
-  import HomeScreen from './screens/HomeScreen/Index';
-  import Preload from './screens/Preload';
-  import TextToSpeechScreen from './screens/TextToSpeechScreen/TextToSpeechScreen.js';
-  import PecsScreen from './screens/PecsScreen';
-  import FacialScreen from './screens/FacialScreen/FacialScreen';
-  import indFacialScreen from './screens/FacialScreen/indFacialScreen';
-  import ExerciseScreen from './screens/FacialScreen/Exercise';
-  //import TelaTeste from './screens/TelaTeste';
+import LoginScreen from './screens/LoginScreen';
+import FavoriteScreen from './screens/FavoriteScreen/';
+import RegisterScreen from './screens/RegisterScreen';
+import ForgotPassword from './screens/ForgotPassword';
+import HomeScreen from './screens/HomeScreen/Index';
+import Preload from './screens/Preload';
+import TextToSpeechScreen from './screens/TextToSpeechScreen/TextToSpeechScreen.js';
+import PecsScreen from './screens/PecsScreen';
+import FacialScreen from './screens/FacialScreen/FacialScreen';
+import IndFacialScreen from './screens/FacialScreen/indFacialScreen';
+import ExerciseScreen from './screens/FacialScreen/ExerciseScreen';
+//import TelaTeste from './screens/TelaTeste';
 import { StyleSheet, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -70,11 +70,11 @@ const App = () => {
         <Stack.Screen
           name="Facial"
           component={FacialScreen}
-        //options={forgotPasswordStyle}
+          options={expScreenStyle}
         />
         <Stack.Screen
           name="indFacial"
-          component={indFacialScreen}
+          component={IndFacialScreen}
         //options={forgotPasswordStyle}
         />
         <Stack.Screen
@@ -111,6 +111,10 @@ const forgotPasswordStyle = {
 const favoriteScreenStyle = {
   title: 'Favoritos',
 }
+const expScreenStyle = {
+  title: 'Expressões Faciais',
+}
+
 
 
 

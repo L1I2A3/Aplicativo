@@ -6,7 +6,9 @@ import { useNavigation, CommonActions } from '@react-navigation/core'
 import emoji from '../../src/assets/emojis/emoji_teste.png'
 
 const FacialScreen = () => {
+
   const navigation = useNavigation();
+  
   const toindFacial = (texto) => {
     //console.log(texto)
       navigation.dispatch(

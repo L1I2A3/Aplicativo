@@ -7,7 +7,7 @@ import arrow from '../../src/assets/imagens/arrow.png'
 import {COLORS} from '../../src/assets/colors'
 import React from 'react'
 
-const FacialScreen = (props) => {
+const IndFacialScreen = (props) => {
   const navigation = useNavigation();
   const def = props.route.params.exp.texto;
 
@@ -17,20 +17,21 @@ const FacialScreen = (props) => {
     headerTitleStyle: { color: '#ffffff' },
     title: props.route.params.exp.texto,
   });
-  const [exp, setExp] = useState("")
 
+  const [exp, setExp] = useState("")
+/*
   useEffect(() => {
     if(def != undefined){
       console.log(def)
       setExp(def)
     }
   }, [])
-
+*/
   const toExercise = (def) => {
     navigation.dispatch(
       CommonActions.navigate({
         name: 'Exercise',
-        params: { exp: {def} }
+        //params: { exp: {def} }
       })      
     )
   }
@@ -77,13 +78,11 @@ const FacialScreen = (props) => {
       </TouchableHighlight>
       
     </SafeAreaView>
-    
-
-    
+  
   )
 }
 
-export default FacialScreen
+export default IndFacialScreen
 
 const styles = StyleSheet.create({
     container: {

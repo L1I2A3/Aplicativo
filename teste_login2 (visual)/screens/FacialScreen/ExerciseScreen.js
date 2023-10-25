@@ -20,7 +20,7 @@ import {Camera} from 'expo-camera';
 
 const RESULT_MAPPING = ['Raiva', 'Tristeza', 'Felicidade', 'Desdém', 'Surpresa', 'Desgosto', 'Medo'];
 
-const Main = () => {
+const ExerciseScreen = () => {
   const cameraRef = useRef();
   const [isProcessing, setIsProcessing] = useState(false);
   const [presentedShape, setPresentedShape] = useState('');
@@ -40,7 +40,7 @@ const Main = () => {
 
     try{
       const prediction = await startPrediction(model, tensor);
-      const highestPrediction = await prediction.indexOf(
+      const highestPrediction = await prediction.indexOf( //erro 1
         Math.max.apply(null, prediction),
       );
       setPresentedShape(RESULT_MAPPING[highestPrediction]);
@@ -130,4 +130,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Main;
+export default ExerciseScreen;
